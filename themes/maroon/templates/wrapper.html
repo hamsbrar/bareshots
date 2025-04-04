@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>{$MASTER->set_title}</title>
+
+    <!-- SEO stuff -->
+    <meta name="title" content="{$MASTER->set_title}">
+    <meta name="description" content="{$MASTER->set_description}">
+
+    <meta property="og:title" content="{$MASTER->set_title}">
+    <meta property="og:description" content="{$MASTER->set_description}">
+    <meta property="og:type" content="{$MASTER->set_type}">
+    <meta property="og:url" content="{$MASTER->set_url}">
+    <meta property="og:site_name" content="{$MASTER->set_site_name}">
+
+    <meta property="og:image:width" content="{$MASTER->set_image_width}">
+    <meta property="og:image:height" content="{$MASTER->set_image_height}">
+
+    <meta property="og:image" content="{$MASTER->set_image}{$MASTER->set_cache_code}">
+
+    <link rel="icon" href="{$MASTER->set_favicon}{$MASTER->set_cache_code}" />
+    
+    <!-- REQUIRED -->
+    
+    <!-- Application styles -->
+    <link rel="stylesheet" href="{$MASTER->set_css_main}/framework.css{$MASTER->set_cache_code}">
+    
+    <link href="https://npmcdn.com/flickity@2/dist/flickity.css" rel="stylesheet"> 
+
+    <!-- load fonts -->
+    <link href="{$MASTER->set_fonts_url}/roboto.css{$MASTER->set_cache_code}" rel="stylesheet"> 
+
+    <link href="{$MASTER->set_fonts_url}/material.css{$MASTER->set_cache_code}" rel="stylesheet"> 
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Quicksand:400|Quicksand:400|Quicksand:400|Quicksand:400|Quicksand:400|Quicksand:400|Quicksand:400|Quicksand:400">
+
+</head>
+
+<body>
+
+    <script>
+        var title           = '{$MASTER->set_title}';
+        var cache_code      = '{$MASTER->set_cache_code}';
+        var logo            = '{$MASTER->set_logo}{$MASTER->set_cache_code}';
+        var favicon         = '{$MASTER->set_favicon}{$MASTER->set_cache_code}';
+        var url             = '{$MASTER->set_url}';
+        var fonts_url       = '{$MASTER->set_fonts_url}';
+        var graphics_url    = '{$MASTER->set_graphics_url}';
+        var css_main        = '{$MASTER->set_css_main}';
+        var css_includes    = '{$MASTER->set_css_includes}';
+        var js_main         = '{$MASTER->set_js_main}';
+        var js_includes     = '{$MASTER->set_js_includes}';
+
+        var js_header_icons = '{$MASTER->__header_icons}';
+        var js_footer_icons = '{$MASTER->__footer_icons}';
+
+		window.deferAfterLoad = [];
+    </script>
+
+    <div class="hide-always">
+        <img src="{$MASTER->set_image}{$MASTER->set_cache_code}">
+    </div>
+
+    <!-- Visible application -->
+    <div id="app_body" class="app_body">
+        {$MASTER->set_page_content}
+    </div>
+
+    <div>
+        <div class="floating-btn" onclick="load_page('contact', '');">
+            <div class="contact-btn"><img src="{$MASTER->set_graphics_url}/icons/email.svg" alt="" srcset=""></div>
+        </div>
+    </div>
+
+    <!-- REQUIRED -->
+
+
+    <script src="{$MASTER->set_js_includes}/lib.jquery.3.5.1.js{$MASTER->set_cache_code}"></script>
+
+    <!-- System abstraction library -->
+    <script src="{$MASTER->set_js_includes}/lib.system.0.2.1.js{$MASTER->set_cache_code}"></script>
+    
+    <script src="{$MASTER->set_js_includes}/lib.isotopes.3.0.6.js{$MASTER->set_cache_code}"></script>
+
+    <script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/flickity-fullscreen@1/fullscreen.css">
+
+    <script src="https://unpkg.com/flickity-fullscreen@1/fullscreen.js"></script>
+
+    <!-- Application script -->
+    <script src="{$MASTER->set_js_main}/app.js{$MASTER->set_cache_code}"></script>
+
+    <script>
+		$.each(window.deferAfterLoad, (index, fn) => fn());
+    </script>
+
+</body>
+
+</html>

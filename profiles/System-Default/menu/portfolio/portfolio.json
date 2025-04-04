@@ -1,0 +1,6 @@
+{
+    "config": {
+        "order": "events,life,sports",
+        "default": "life"
+    }
+}

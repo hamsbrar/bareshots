@@ -1,0 +1,18 @@
+// preloaders module
+
+// module properties
+@module-name: 'preloaders';
+@module-file-name: 'index.less';
+
+// --------------------------- default
+
+@preloaders-bar-color: @theme-accent-color;
+@preloaders-circle-color: @theme-gray-color;
+
+
+// -----------------------------------------
+
+@import "@{modules-loading-path}/@{module-name}/mixins.less";
+
+// compile module file
+@import "@{modules-loading-path}/@{module-name}/@{module-file-name}";

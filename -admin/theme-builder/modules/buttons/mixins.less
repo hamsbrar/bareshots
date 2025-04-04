@@ -1,0 +1,592 @@
+// mixins
+.buttons-mixin-all() {
+
+    .work-btn {
+        position: relative;
+        margin: 0;
+        text-decoration: none !important; 
+        display: inline-block;
+        transition: background-color .3s;
+        cursor: pointer;
+        text-align: center;
+        vertical-align: middle;
+        font-size: @btn-font-size;
+        font-weight: @btn-font-weight;   
+        line-height: @btn-line-height;
+        padding: 10px 20px;
+        border: 0;
+        border-radius: @btn-border-radius;
+        outline: none !important;
+        background-color: @theme-gray-color;
+        color: contrast(@theme-gray-color, @theme-black-color, @theme-white-color, @btn-text-color-contrast-threshold);
+
+        &.loading {
+
+            vertical-align: middle;
+
+            pointer-events: none;
+
+            &:extend(.btn.disabled);
+
+            &:before {
+
+                content: '';
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+                margin-right: 5px;
+                vertical-align: middle;
+                border-width: 2px;
+                border-style: solid;
+                border-color: @theme-gray-color;
+                border-top-color: @theme-white-color;
+                border-radius: 40px;
+
+                @keyframes preloader-rotate {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+                    100% {
+                        transform: rotate(360deg);
+                    }
+                }
+        
+                animation: preloader-rotate 0.6s linear infinite;
+            }
+        }
+        
+        & span {
+            vertical-align: middle;
+        }
+
+        & .icon {
+            vertical-align: middle;
+            font-size: 1.3em;
+        }
+
+        &:hover, .dropdown:hover & {
+            background-color: darken(@theme-gray-color, 15%);
+        }
+
+        &:focus {
+            background-color: darken(@theme-gray-color, 10%);
+        }
+
+        &:active {
+            background-color: fadeout(@theme-gray-color, 20%);
+        }
+
+        &.theme {
+
+            background-color: @theme-accent-color;
+            color: contrast(@theme-accent-color, @theme-black-color, @theme-white-color, @btn-text-color-contrast-threshold);
+           
+            &:hover, .dropdown:hover &.theme {
+                background-color: darken(@theme-accent-color, 15%);
+            }
+   
+            &:focus {
+                background-color: darken(@theme-accent-color, 10%);
+            }
+
+            &:active {
+                background-color: fadeout(@theme-accent-color, 20%);
+            }
+
+        }
+
+        &.mega {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-left: 75px;
+            padding-right: 75px;
+            font-size: 2.5rem;
+            letter-spacing: 4px;
+        }
+    
+        &.jumbo {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            padding-left: 30px;
+            padding-right: 30px;
+            font-size: 1.6rem;
+            letter-spacing: 3px;
+        }
+    
+        &.large {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 22px;
+            padding-right: 22px;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+        
+        &.small {
+            padding-top: 7px;
+            padding-bottom: 7px;
+            padding-left: 12px;
+            padding-right: 12px;
+            font-size: 1rem;
+            letter-spacing: 0px;
+        }
+    
+        &.mini {
+            padding-top: 4px;
+            padding-bottom: 4px;
+            padding-left: 10px;
+            padding-right: 10px;
+            font-size: 0.9rem;
+            letter-spacing: 0px;
+        }
+    
+        &.tiny {
+            padding-top: 3px;
+            padding-bottom: 3px;
+            padding-left: 6px;
+            padding-right: 6px;
+            font-size: 0.8rem;
+            letter-spacing: 0px;
+        }
+
+        &.full {
+            width: 100%;
+        }
+
+    }
+
+    /* default button */
+    .btn {
+
+        position: relative;
+        display: inline-block;
+        margin: 0;
+        padding: (10px - @btn-border-width) 20px;
+    
+        font-size: @btn-font-size; //0.8em
+        font-weight: @btn-font-weight;
+        text-align: center;
+        text-decoration: none !important;
+        white-space: nowrap;
+        line-height: @btn-line-height;
+        vertical-align: middle;
+    
+        color: #fff;
+        background: none;
+        background-color: @theme-accent-color;
+        cursor: pointer;
+        border: @btn-border-width solid transparent;
+        border-radius: 0;
+        outline: none !important;
+    
+        & span {
+            vertical-align: middle;
+        }
+
+        & .icon {
+            vertical-align: middle;
+            font-size: 1.3em;
+        }
+
+        &.loading {
+
+            vertical-align: middle;
+
+            pointer-events: none;
+            
+            &:extend(.btn.disabled);
+
+            &:before {
+
+                content: '';
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+                margin-right: 5px;
+                vertical-align: middle;
+                border-width: 2px;
+                border-style: solid;
+                border-color: @theme-gray-color;
+                border-top-color: @theme-white-color;
+                border-radius: 40px;
+
+                @keyframes preloader-rotate {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+                    100% {
+                        transform: rotate(360deg);
+                    }
+                }
+        
+                animation: preloader-rotate 0.6s linear infinite;
+            }
+        }
+  
+        // transitions
+        & when (@btn-disable-transition = false) {
+            transition-property: background, border-color, color, box-shadow, opacity;
+            transition-duration: .15s;
+        }
+    
+        // border-radius
+        & when (@btn-border-radius > 0) {
+            border-radius: @btn-border-radius;
+        }
+    
+        &:hover, .dropdown:hover & {
+            & when (@btn-disable-shadows = false) {
+                box-shadow: 0 2px 4px -2px rgba(0,0,0,.2);
+            }
+        }
+    
+        &:focus {
+            box-shadow: 0 0px 1px rgba(0,0,0,.2);
+        }
+    
+        &:active {
+            & when (@btn-disable-shadows = false) {
+                box-shadow: 0 0px 1px rgba(0,0,0,.2);
+            }
+            transition-duration: 0s;
+        }
+    
+        // border-radius when active
+        & when (@btn-border-radius > 0) {
+            .active > &[data-toggle] {
+                border-radius: @btn-border-radius @btn-border-radius 0 0;
+            }
+        }
+    
+        &.active,
+        .active > &[data-toggle] {
+            z-index: @btn-active-z-index;
+            perspective: 500;
+        }
+    
+        &.mega {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-left: 75px;
+            padding-right: 75px;
+            font-size: 3.5rem;
+            letter-spacing: 4px;
+        }
+    
+        &.jumbo {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            padding-left: 30px;
+            padding-right: 30px;
+            font-size: 2.5rem;
+            letter-spacing: 3px;
+        }
+    
+        &.large {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 22px;
+            padding-right: 22px;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+        }
+        
+        &.small {
+            padding-top: 7px;
+            padding-bottom: 7px;
+            padding-left: 12px;
+            padding-right: 12px;
+            font-size: 1.3rem;
+            letter-spacing: 0px;
+        }
+    
+        &.mini {
+            padding-top: 4px;
+            padding-bottom: 4px;
+            padding-left: 10px;
+            padding-right: 10px;
+            font-size: 1.2rem;
+            letter-spacing: 0px;
+        }
+    
+        &.tiny {
+            padding-top: 3px;
+            padding-bottom: 3px;
+            padding-left: 6px;
+            padding-right: 6px;
+            font-size: 1.1rem;
+            letter-spacing: 0px;
+        }
+
+        &.full {
+            width: 100%;
+        }
+
+    }
+    
+    // static palette button styles generator mixin
+    .generate-btn(@base-color: 'theme-accent-color') {
+    
+        // inner mixin
+        .generate-btn-styles() {
+
+            & when not (@@base-color = @theme-accent-color), (@base-color = 'theme-accent-color') {
+               
+                & {
+                    color: @text-color;
+                    background-color: @color;
+    
+                    // for toggle button
+                    &.active, &.hollow.active,
+                    :checked + label &,
+                    :checked + label &.hollow {
+                        color: @text-color;
+                        background-color: @color-l1;
+                        border-color: @color-d2;
+    
+                        &:hover, .dropdown:hover & {
+                            color: @text-color;
+                        }
+                        &:focus {
+                            color: @text-color;
+                            border-color: @color-d1;
+                            box-shadow: 0 0px 2px rgba(0,0,0,.3);
+                        }
+                    }
+    
+                    &:hover, .dropdown:hover & {
+                        background-color: @color-l1;
+                        border-color: @color-d1;
+                    }
+    
+                    &:focus {
+                        border-color: @color-d2;
+                    }
+    
+                    &:active {
+                        background-color: @color-d1;
+                        border-color: @color-d2;
+                    }
+    
+                    .caret {
+                        border-top-color: @text-color;
+                    }
+    
+                }
+    
+                // hollow style
+                &.hollow {
+                    color: @color;
+                    border-color: @color;
+                    background: none;
+    
+                    .caret {
+                        border-top-color: @color;
+                    }
+    
+                    &:hover, .dropdown:hover & {
+                        color: @text-color;
+                        border-color: @color;
+                        background-color: @color;
+                    }
+    
+                    &:focus {
+                        color: @color-d2;
+                        border-color: @color-d2;
+                    }
+                    &:focus:hover, .dropdown:hover & {
+                        color: @text-color;
+                    }
+    
+                    &:active {
+                        color: @text-color;
+                        background-color: @color-d1;
+                        border-color: @color-d2;
+                    }
+    
+                    & when (@include-btn-dropdown = true) {
+                        &:hover, &:active,
+                        &.active, .active > &[data-toggle="dropdown"] {
+                            .caret {
+                                border-top-color: @text-color;
+                            }
+                        }
+                    }
+                }
+    
+                &.hollow.disabled,
+                &.hollow:disabled,
+                fieldset[disabled] &.hollow,
+                :disabled + label &.hollow {
+                    color: @color !important;
+                    border-color: @color !important;
+                    background: none !important;
+                }
+
+            }
+        }
+    
+        // define text color
+        @text-color: contrast(@@base-color,@theme-black-color,#fff,@btn-text-color-contrast-threshold);
+    
+        .framework-mixin-color-variations(@@base-color);
+        .generate-btn-styles();
+    
+    }
+    
+    
+    & when (@gray-disabled-btn = true) {
+        .btn.disabled,
+        .btn:disabled,
+        fieldset[disabled] .btn,
+        :disabled + label .btn {
+            background-color: #666 !important;
+            color: #aaa !important;
+            box-shadow: none !important;
+            border-color: transparent !important;
+            cursor: default !important
+        }
+    
+        .btn.hollow {
+            background: none;
+        }
+        .btn.hollow.disabled,
+        .btn.hollow:disabled,
+        fieldset[disabled] .btn.hollow,
+        :disabled + label .btn.hollow {
+            background: none !important;
+            color: #aaa !important;
+            border-color: #aaa !important;
+            box-shadow: none !important;
+        }
+    }
+    
+    /* whitetext option */
+    .btn.whitetext:not(.disabled) {
+        color: #fff !important;
+    }
+    
+    .btn.disabled,
+    .btn:disabled,
+    fieldset[disabled] .btn,
+    :disabled + label .btn {
+        opacity: 0.5;
+        cursor: default !important;
+        box-shadow: none !important;
+    }
+    
+    /* button groups */
+    .btn-group {
+        position: relative;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        .prop.cf;
+    
+        .btn + .btn {
+            margin-left: 5px;
+        }
+    
+        .btn-group {
+            float: left;
+        }
+    
+        .btn-group + .btn-group {
+            margin-left: 5px;
+        }
+    
+        .btn {
+            float: left;
+            z-index: @btn-normal-z-index;
+    
+            &:active {
+                z-index: @btn-active-z-index;
+            }
+        }
+    }
+    
+    /* segmented button group */
+    .btn-group-segmented {
+        & when (@btn-disable-transition = false) {
+            transition: 0.2s opacity;
+        }
+    
+        & when (@btn-border-radius > 0) {
+            .btn {
+                border-radius: 0;
+            }
+    
+            & > .btn:first-child,
+            & > label:first-of-type .btn {
+                border-top-left-radius: @btn-border-radius;
+                border-bottom-left-radius: @btn-border-radius;
+            }
+            & > .btn:last-child,
+            & > label:last-of-type .btn {
+                border-top-right-radius: @btn-border-radius;
+                border-bottom-right-radius: @btn-border-radius;
+            }
+        }
+    
+        .btn + .btn {
+            margin-left: -@btn-border-width;
+        }
+        .btn {
+            z-index: @btn-normal-z-index;
+        }
+        .btn.active {
+            z-index: @btn-active-z-index;
+        }
+    
+        // radiobox method
+        input[type="radio"] {
+            opacity: 0;
+            height: 0;
+            width: 0;
+            position: absolute;
+            overflow: hidden;
+            //visibility: hidden;
+        }
+    
+        label ~ label .btn {
+            margin-left: -@btn-border-width;
+        }
+    
+        label .btn {
+            z-index: @btn-normal-z-index;
+        }
+        :checked + label .btn {
+            z-index: @btn-active-z-index;
+        }
+    
+        &.disabled,
+        fieldset[disabled] & {
+            opacity: 0.5;
+            pointer-events: none;
+    
+            .btn {
+                opacity: 1;
+            }
+        }
+    }
+    
+    // generate single default color button
+    .btn {
+        .generate-btn();
+    }
+    
+    // generate color buttons
+    .generate-color-btns(@colors; @index) when (@index > 0) {
+        .generate-color-btns(@colors; (@index - 1)); // decrement.
+    
+        @btn-color: extract(@colors, @index);
+    
+        // generate new classes for button colors
+        .btn.@{btn-color} {
+            .generate-btn(~'@{btn-color}');
+        }
+    }
+    
+    @btn-colors-length: length(@btn-colors);
+    .generate-color-btns(@btn-colors, @btn-colors-length);
+
+}

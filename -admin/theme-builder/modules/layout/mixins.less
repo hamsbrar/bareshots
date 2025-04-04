@@ -1,0 +1,121 @@
+// mixins
+.layout-mixin-main() {
+
+    .@{layout-classname} {
+
+        width: @layout-default-width;
+        margin-left: auto;
+        margin-right: auto;
+
+        .padding-left(@layout-default-padding-left);
+        .padding-right(@layout-default-padding-right);
+
+        &.mobile {
+            max-width: 600px; 
+        }
+
+        &.tablet {
+            max-width: 992px; 
+        }
+
+        &.desktop {
+            max-width: 1200px;
+        }
+  
+    }
+
+    .@{layout-row-classname} {
+
+        .prop.cf;
+    
+        &.collapse-gutter {
+            & > [class^="@{layout-cols-classes-prefix}"],
+            & > [class*=" @{layout-cols-classes-prefix}"] {
+                &:not(:first-of-type):not(:last-of-type) {
+                    .padding-left(@layout-default-padding-left / 2);
+                    .padding-right(@layout-default-padding-right / 2);
+                }
+                &:first-of-type:not(:last-of-type) {
+                    .padding-right(@layout-default-padding-right / 2);
+                }
+                &:last-of-type:not(:first-of-type) {
+                    .padding-left(@layout-default-padding-left / 2);
+                }
+            }
+        }
+
+    }
+
+    [class^="@{layout-cols-classes-prefix}"], [class*=" @{layout-cols-classes-prefix}"] {
+        min-height: 1px;
+        .padding-left(@layout-default-padding-left);
+        .padding-right(@layout-default-padding-right);
+        .float-left();
+    }
+
+    /* default for all devices (including extra large)*/
+    .layout-mixin-cols-each(@layout-total-cols-to-generate);
+
+    /* for mobile phones: */
+    @media only screen and (max-width: 600px) {
+
+        .@{layout-responsive-identifier-name} [class^="@{layout-cols-classes-prefix}"], .@{layout-responsive-identifier-name} [class*=" @{layout-cols-classes-prefix}"], 
+        .@{layout-responsive-identifier-name} [class^="@{layout-colspan-classes-prefix}"], .@{layout-responsive-identifier-name} [class*=" @{layout-colspan-classes-prefix}"] {
+          width: 100% !important;
+        }
+
+        .layout-mixin-colspans-each(@layout-total-cols-to-generate, @layout-mobspan-classes-prefix);
+
+    }
+
+    /* for tablets: */
+    @media only screen and (min-width: 600px) and (max-width: 992px) {
+        .layout-mixin-colspans-each(@layout-total-cols-to-generate, @layout-tabspan-classes-prefix);
+    }
+
+    /* for desktops, laptops: */
+    @media only screen and (min-width: 992px) and (max-width: 1200px) {
+        .layout-mixin-colspans-each(@layout-total-cols-to-generate, @layout-desktopspan-classes-prefix);
+    }
+
+}
+
+.layout-mixin-cols-each(@i) when (@i > 0) {
+
+    .layout-mixin-cols-each(@i - 1);
+
+    .@{layout-cols-classes-prefix}@{i} {
+        width: (100% / @i);
+    }
+    
+    .layout-mixin-colspans(@i - 1, @i);
+
+}
+
+.layout-mixin-colspans(@i, @j) when (@i > 1) {
+
+    .layout-mixin-colspans(@i - 1, @j);
+
+    .@{layout-cols-classes-prefix}@{j}.@{layout-colspan-classes-prefix}@{i} {
+        width: (100% * (@i/@j));
+    }
+
+}
+
+.layout-mixin-colspans-each(@i, @prefix) when (@i > 0) {
+
+    .layout-mixin-colspans-each(@i - 1, @prefix);
+    
+    .layout-mixin-colspans(@i, @i, @prefix);
+
+}
+
+.layout-mixin-colspans(@i, @j, @prefix) when (@i > 0) {
+
+    .layout-mixin-colspans(@i - 1, @j, @prefix);
+
+    .@{layout-responsive-identifier-name} .@{layout-cols-classes-prefix}@{j}.@{prefix}@{i} {
+        width: (100% * (@i/@j)) !important;
+    }
+
+}

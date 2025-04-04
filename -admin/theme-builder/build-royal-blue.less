@@ -1,0 +1,43 @@
+// init framework
+@import 'framework.init.less';
+
+// RTL, style left to right when it's set to 1;
+@framework-rtl: 0;
+
+// name of the theme to generate styles in
+@framework-theme: "royal-blue";
+
+// scope for all styles, default global
+// @framework-root-class: ".crease";
+
+// include external libraries
+@import (less) "@{libs}/reset";      // reset library
+@import (less) "@{libs}/normalize";  // normalize library
+
+@import 'framework.load.less';
+
+/* Basic modules*/
+// Just comment the modules to exclude them
+
+@import "@{modules}/layout.module";
+
+@import "@{modules}/typography.module";
+
+@import "@{modules}/navigations.module";
+
+@import "@{modules}/buttons.module";
+
+@import "@{modules}/dropdowns.module";
+
+@import "@{modules}/alerts.module";
+
+@import "@{modules}/preloaders.module";
+
+@import "@{modules}/form_elements.module";
+
+@import "@{modules}/overriders.module";
+
+@import (less) "@{libs}/application";  // application dedicated styles
+
+// run this command to generate framework.css
+// lessc index.less bin/framework.css

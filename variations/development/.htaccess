@@ -1,0 +1,15 @@
+<files *.json>
+  order deny,allow
+  deny from all
+</files>
+
+RewriteEngine On
+
+# Stop routing directory traffic to our router[disabled for now]
+# RewriteCond %{REQUEST_FILENAME} !-d
+
+# Stop routing files url to our router
+RewriteCond %{REQUEST_FILENAME} !-f
+
+  # Route everything else to the system
+  RewriteRule ^(.+)$ index.php [QSA,L]

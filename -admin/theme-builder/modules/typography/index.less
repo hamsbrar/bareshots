@@ -1,0 +1,83 @@
+/*
+---------------------------------------------------------- Typography START ----
+*/
+
+@{framework-class} & {
+    
+    // ----------------- headings
+    
+    @typography_temp-headings-classes: .framework-mixin-get-classes(@typography-headings-classes)[];
+
+    // generate default styles for all heading classes
+    .typography-mixin-headings-default(@typography_temp-headings-classes);
+
+    // generate sizes and weights for each heading class
+    .typography-mixin-headings-each( length(@typography-headings-classes) );
+
+    // ---------------- paragraph
+
+    @typography_temp-paragraphs-classes: .framework-mixin-get-classes(@typography-paragraphs-classes)[];
+
+    .typography-mixin-paragraphs-default(@typography_temp-paragraphs-classes);
+
+    // ---------------- code
+
+    @typography_temp-codes-classes: .framework-mixin-get-classes(@typography-codes-classes)[];
+
+    .typography-mixin-codes-default(@typography_temp-codes-classes);
+
+    // ---------------- pre
+
+    @typography_temp-pres-classes: .framework-mixin-get-classes(@typography-pres-classes)[];
+
+    .typography-mixin-pres-default(@typography_temp-pres-classes);
+
+    // ---------------- blockquote
+
+    @typography_temp-blockquotes-classes: .framework-mixin-get-classes(@typography-blockquotes-classes)[];
+
+    .typography-mixin-blockquotes-default(@typography_temp-blockquotes-classes);
+
+    // ---------------- lists
+
+    @typography_temp-lists-classes: .framework-mixin-get-classes(@typography-lists-classes)[];
+
+    .typography-mixin-lists-default(@typography_temp-lists-classes);
+
+    // ---------------- list-items
+
+    @typography_temp-list_items-classes: .framework-mixin-get-classes(@typography-list_items-classes)[];
+
+    .typography-mixin-list_items-default(@typography_temp-list_items-classes);
+
+    // ---------------- hrs
+
+    @typography_temp-hrs-classes: .framework-mixin-get-classes(@typography-hrs-classes)[];
+
+    .typography-mixin-hrs-default(@typography_temp-hrs-classes);
+
+    // ---------------- links
+
+    @typography_temp-links-classes: .framework-mixin-get-classes(@typography-links-classes)[];
+
+    .typography-mixin-links-default(@typography_temp-links-classes);
+
+    //----------------- typography over-riders
+
+    @typography_temp-font_weight-classes: .framework-mixin-get-classes(@typography-font_weights-classes)[];
+    @typography_temp-font_size-classes: .framework-mixin-get-classes(@typography-font_sizes-classes)[];
+
+    // based on font sizes
+    .typography-mixin-font_sizes-each( length(@typography-font_sizes-classes) );
+
+    // based on font weights
+    .typography-mixin-font_weights-each( length(@typography-font_weights-classes) );
+
+    // ungrouped overriders
+    .typography-generate-extra-overriders();
+
+}
+
+/*
+---------------------------------------------------------- Typography END ----
+*/

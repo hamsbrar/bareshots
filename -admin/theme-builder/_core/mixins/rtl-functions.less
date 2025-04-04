@@ -1,0 +1,53 @@
+// aligners
+.framework-mixin-rtl-direction(@direction) when (@direction = "left") {
+    @return: if(
+            @framework-rtl = 1,
+                ~"right",
+            ~"left"
+        );
+}
+
+.framework-mixin-rtl-direction(@direction) when (@direction = "right") {
+    @return: if(
+            @framework-rtl = 1,
+                ~"left",
+            ~"right"
+        );
+}
+
+.framework-mixin-rtl-rad(@type, @one, @two, @three, @four) {
+    @return: if(
+            @framework-rtl = 1,
+                ~"@{two} @{one} @{four} @{three}",
+            ~"@{one} @{two} @{three} @{four}"
+        );
+}
+
+// padding and margins combo mixins
+.framework-mixin-rtl-padMar(@type, @value) {
+    @return: ~"@{value}";
+}
+
+.framework-mixin-rtl-padMar(@type, @top, @right, @bottom, @left, @prefix, @endfix) {
+    @return: if(
+            @framework-rtl = 1,
+                ~"@{prefix} @{top} @{left} @{bottom} @{right} @{endfix}",
+            ~"@{prefix} @{top} @{right} @{bottom} @{left} @{endfix}"
+        );
+}
+
+.framework-mixin-rtl-padMar(@type, @direction, @value, @prefix, @endfix) when (@direction = "left"), (@direction = "right") {
+
+    @get-direction: .framework-mixin-rtl-direction(@direction)[];
+
+    @{type}-@{get-direction}: @prefix @value @endfix;
+
+}
+
+.framework-mixin-rtl-get(@rtl, @ltr) {
+    @return: if(
+            @framework-rtl = 1,
+               @ltr,
+            @rtl
+        );
+}

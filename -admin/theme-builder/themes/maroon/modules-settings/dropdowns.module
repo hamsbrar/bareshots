@@ -1,0 +1,31 @@
+// dropdowns module
+
+// module properties
+@module-name: 'dropdowns';
+@module-file-name: 'index.less';
+
+// --------------------------- default
+
+@dropdowns-z-index: 5;
+@dropdowns-min_width: 160px;           
+@dropdowns-font_color: fadeout(@theme-font_color, 25%);
+@dropdowns-font_weight: 400;           
+@dropdowns-background: @theme-white-color;           
+@dropdowns-border_color: @theme-gray-color;                    
+
+@dropdowns-padding: 10px, 0px;   
+@dropdowns-margin: 0px, 0px, 0px, 0px;                 
+@dropdowns-pointing-margin: 12px, 0px, 0px, 0px;
+@dropdowns-border_radius: 4px;  
+@dropdowns-item_padding: 3px 20px;  
+@dropdowns-large_item_padding: 8px, 30px;  
+
+@dropdowns-circle-color: @theme-gray-color;
+
+
+// -----------------------------------------
+
+@import "@{modules-loading-path}/@{module-name}/mixins.less";
+
+// compile module file
+@import "@{modules-loading-path}/@{module-name}/@{module-file-name}";

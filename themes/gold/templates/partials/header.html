@@ -1,0 +1,41 @@
+       
+<div class="block full noselect">
+    
+    <div id="desktop_header" class="header header-desktop hide-mobile header-color">
+        
+       <div class="max-1200 center">
+            <div class="header-section left">
+                <a href="{$MASTER->set_url}" class="hover-underlined">
+                    <img class="main-logo" src="{$MASTER->set_logo}{$MASTER->set_cache_code}" alt="">
+                </a>
+            </div>
+
+            <div class="header-section right">
+                <div class="header-right-margin">
+                    <div id="main-header-items" class="main-header-items">
+                    </div>
+                </div>
+            </div>
+       </div>
+        
+    </div>
+
+    <div id="mobile_header" class="header header-mobile hide-desktop header-color">
+        <div id="app_logo" class="app-mobile-logo">
+            <a href="{$MASTER->set_url}" class="hover-underlined">
+                <img class="mobile-logo" src="{$MASTER->set_logo}{$MASTER->set_cache_code}" alt="">
+            </a>
+        </div>
+        <div id="app_mobile_menu" class="app-mobile-menu" onclick="sys_scrollToTop();$('#app_mobile_navigation').slideToggle(200);">
+            <span class="material-icons">menu</span>
+        </div>
+    </div>
+    
+    <div id="app_mobile_navigation" class="header-color menu-navigation full" style="display: none;">
+    </div>
+
+</div>
+
+<br>
+<br>
+<br>

@@ -1,0 +1,33 @@
+// form_elements module
+
+// module properties
+@module-name: 'form_elements';
+@module-file-name: 'index.less';
+
+// --------------------------- radio buttons
+
+@form_elements-radio-active-color: @theme-accent-color;
+@form_elements-radio-in-active-color: fadeout(@theme-gray-color, 50%);
+@form_elements-radio-in-active-hover-color: fadeout(@theme-gray-color, 20%);
+
+// --------------------------- checkboxes
+
+@form_elements-checkbox-active-head-color: contrast(@theme-accent-color, @theme-black-color, @theme-white-color, 60%);
+@form_elements-checkbox-active-color: @theme-accent-color;
+@form_elements-checkbox-in-active-color: darken(@theme-white-color, 7%);
+@form_elements-checkbox-in-active-hover-color: fadeout(@theme-gray-color, 20%);
+
+// --------------------------- selects
+
+@form_elements-select-background: darken(@theme-white-color, 7%);
+
+// --------------------------- inputs
+
+@form_elements-input-background: darken(@theme-white-color, 7%);
+
+// ---------------------------
+
+@import "@{modules-loading-path}/@{module-name}/mixins.less";
+
+// compile module file
+@import "@{modules-loading-path}/@{module-name}/@{module-file-name}";

@@ -1,0 +1,33 @@
+// some options required extra work
+@framework-class: ~"@{framework-root-class}";
+@framework-behaviour-classes: .framework-mixin-get-tags(~"@{framework-behaviour-applicable-classes}")[];
+
+// processed paths
+@variables-loading-path: '@{root-dir}@{less-folder}/@{core-dir}';
+@mixins-loading-path: '@{root-dir}@{less-folder}/@{core-dir}';
+@theme-loading-path: '@{root-dir}@{less-folder}/@{themes-dir}/@{framework-theme}';
+@modules-loading-path: '@{root-dir}@{less-folder}/@{modules-dir}';
+
+// file paths
+@variables: '@{variables-loading-path}/variables.less';
+@variables-overrides: '@{variables-loading-path}/variables.overrides';
+
+@theme: '@{theme-loading-path}/theme.less';
+@modules: "@{theme-loading-path}/modules-settings";
+
+@mixins: '@{mixins-loading-path}/mixins.less';
+@mixins-overrides: '@{mixins-loading-path}/mixins.overrides';
+
+// external libs
+@libs: '@{root-dir}/libs';
+
+// load variables
+@import '@{variables}';
+@import (optional) '@{variables-overrides}';
+
+// load theme
+@import '@{theme}';
+
+// load mixins
+@import '@{mixins}';
+@import (optional) '@{mixins-overrides}';

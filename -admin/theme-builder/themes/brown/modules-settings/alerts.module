@@ -1,0 +1,20 @@
+// alerts module
+
+// module properties
+@module-name: 'alerts';
+@module-file-name: 'index.less';
+
+// --------------------------- default
+
+@alert-color: @color-gray;
+@alert-accent-color: @theme-accent-color;
+@alert-success-color: @color-green;
+@alert-warning-color: @color-gold;
+@alert-danger-color: @color-red;
+
+// -----------------------------------------
+
+@import "@{modules-loading-path}/@{module-name}/mixins.less";
+
+// compile module file
+@import "@{modules-loading-path}/@{module-name}/@{module-file-name}";

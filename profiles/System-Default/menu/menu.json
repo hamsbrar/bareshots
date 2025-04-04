@@ -1,0 +1,13 @@
+{
+    "config": {
+        "order": "home,artist,portfolio,shop,contact",
+        "default": "home"
+    },
+    "actions": {
+        "home": "system_page_home",
+        "artist": "system_page_bio",
+        "portfolio": "system_page_portfolio",
+        "contact": "system_page_contact",
+        "shop": "system_page_shop"
+    }
+}

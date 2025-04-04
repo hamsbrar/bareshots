@@ -1,0 +1,25 @@
+<div id="app_header" class="app-section header-color">
+
+    {$MASTER->insert-app_header}
+
+    <script>
+        var menu_data = JSON.parse('{$MASTER->insert-menu_data}');
+        var social_data = JSON.parse('{$MASTER->insert-social_data}');
+        var footer_data = JSON.parse('{$MASTER->insert-footer_data}');
+
+        load_menu_data(menu_data);
+        load_social_data(social_data);
+        load_footer_data(footer_data);
+    </script>
+
+</div>
+
+<div id="app_content" class="app-section">
+    <script>
+        load_page('{$MASTER->insert-app_route_1}', '{$MASTER->insert-app_route_2}');
+    </script>
+</div>
+
+<div id="app_footer" class="app-section">
+    {$MASTER->insert-app_footer}
+</div>

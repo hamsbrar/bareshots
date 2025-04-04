@@ -1,0 +1,46 @@
+{$MASTER->insert-page_header}
+
+<div class="layout responsive header-margin">
+    <div class="row">
+        <div id="bio_first_part" class="col-2 col-span-1 desktop-span-1 tablet-span-1 mobile-span-2">
+            <div class="bio-image-holder">
+                <img src="{$MASTER->insert-image_src}" alt="" class="w3-animate-{$MASTER->insert-image_direction}">
+            </div>
+        </div>
+        <div id="bio_second_part" class="col-2 col-span-1 desktop-span-1 tablet-span-1 mobile-span-2">
+            <div class="mar-15-10 h3 quicksand b1 gray userbio">{$MASTER->insert-html_content}</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    if('{$MASTER->insert-image_direction}' == 'center')
+    {
+        $("#bio_first_part #bio_second_part").removeClass('col-2 col-span-1 desktop-span-1 tablet-span-1 mobile-span-2');
+        $("#bio_first_part #bio_second_part").addClass('col-1 col-span-1 desktop-span-1 tablet-span-1 mobile-span-1 text-center');
+    }
+    else
+    {
+        if('{$MASTER->insert-image_direction}' == 'left')
+        {
+            $("#bio_first_part").addClass('left text-right mobile-text-center');
+            $("#bio_second_part").addClass('right text-left mobile-text-center');
+        } else
+        {
+            $("#bio_second_part").addClass('left text-right mobile-text-center');
+            $("#bio_first_part").addClass('right text-left mobile-text-center');
+        }
+    }
+
+    $(() => 
+    {
+        if($(window).width() > 900 && {$MASTER->insert-page_animate_scroll_to_content})
+        {
+            $('html, body').animate({
+                scrollTop: $("#app_inner_page").offset().top
+            });
+        }
+    });
+</script>
+
+{$MASTER->insert-page_footer}

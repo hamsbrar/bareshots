@@ -1,0 +1,34 @@
+// buttons module
+
+// module properties
+@module-name: 'buttons';
+@module-file-name: 'index.less';
+
+// --------------------------- default
+
+@include-btn-dropdown: false;
+@include-btn-split: false;
+@btn-disable-colored-dropdown: false;
+@btn-border-width: 2px;
+@btn-border-radius: 3px;
+@btn-font-size: 0.9rem;
+@btn-font-weight: 400;
+@btn-letter-spacing: 2px;
+@btn-line-height: 1.2;
+@btn-dropdown-menu-item-font-size: 0.9em;
+@gray-disabled-btn: false;
+@btn-disable-transition: false;
+@btn-disable-shadows: false;
+@btn-spinner-animation-duration: 0.4s;
+@btn-text-color-contrast-threshold: 60%;
+@btn-colors: color-gray, color-red, color-green, color-blue, color-white;
+@btn-normal-z-index: 1;
+@btn-active-z-index: 2;
+@dropdown-menu-z-index: 5;
+
+// -----------------------------------------
+
+@import "@{modules-loading-path}/@{module-name}/mixins.less";
+
+// compile module file
+@import "@{modules-loading-path}/@{module-name}/@{module-file-name}";

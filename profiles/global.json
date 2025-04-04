@@ -1,0 +1,604 @@
+{
+    "active_profile": "System-Default",
+    "system_config": {
+        "carousel_config": {
+            "title": {
+                "config": {
+                    "name": "Item Title",
+                    "description": "Title that will be displayed for item in carousel",
+                    "input_type": "text"
+                }
+            },
+            "description": {
+                "config": {
+                    "name": "Item Description",
+                    "description": "Description that will be displayed for item in carousel",
+                    "input_type": "text"
+                }
+            },
+            "load_page": {
+                "config": {
+                    "name": "Page Name",
+                    "description": "Enter name of the page which will be loaded when users clicks this item.",
+                    "input_type": "dropdown",
+                    "possible_values_generator_type": "directory",
+                    "possible_values_generator_variable": "\/profiles\/%editing_profile%\/menu\/"
+                }
+            },
+            "load_sub_page": {
+                "config": {
+                    "name": "Load-Sub-Page\/Category Name",
+                    "description": "Sub-Category, usually a category of page that this image belong to, e.g sports in portfolio page",
+                    "input_type": "text"
+                }
+            }
+        },
+        "shop_config": {
+            "title": {
+                "config": {
+                    "name": "Item Title",
+                    "description": "Title that will be displayed for item in carousel",
+                    "input_type": "text"
+                }
+            },
+            "description": {
+                "config": {
+                    "name": "Item Description",
+                    "description": "",
+                    "input_type": "text"
+                }
+            },
+            "price": {
+                "config": {
+                    "name": "Price",
+                    "description": "Enter anything here, it usually contains price tag e.g $5\/hour",
+                    "input_type": "text"
+                }
+            }
+        },
+        "page_settings": {
+            "page_title": {
+                "config": {
+                    "name": "Page Title",
+                    "description": "Title that will be displayed inside page(cursive one)",
+                    "input_type": "text"
+                }
+            },
+            "page_description": {
+                "config": {
+                    "name": "Page Title - Description",
+                    "description": "Description that follows the title mentioned aboe(in gray color)",
+                    "input_type": "text"
+                }
+            },
+            "hide_page_title_on_desktop": {
+                "config": {
+                    "name": "View Page-Title\/Page-Description",
+                    "description": "Choose where to view page title\/description thats configured above",
+                    "input_type": "dropdown",
+                    "possible_values_generator_type": "given",
+                    "possible_values_generator_variable": {
+                        "hide-desktop hide-desktop-plus": "On Mobile devices only",
+                        "_": "On all devices"
+                    }
+                }
+            },
+            "page_animate_scroll_to_content": {
+                "config": {
+                    "name": "Animate scroll",
+                    "description": "Animate scroll to page content on page load",
+                    "input_type": "dropdown",
+                    "possible_values_generator_type": "given",
+                    "possible_values_generator_variable": {
+                        "1 == 1": "Yes, slow scroll animation",
+                        "1 == 0": "No, just load the page as normal"
+                    }
+                }
+            },
+            "page_quote": {
+                "config": {
+                    "name": "Page Quote",
+                    "description": "Quote\/Text thats displayed in the bottom of the page, leaving empty will remove the quote from the page",
+                    "input_type": "text"
+                }
+            },
+            "carousel_wrapAround": {
+                "config": {
+                    "name": "Carousel | Wrap-Around",
+                    "description": "Allow carousel to wrap-around between starting and ending images",
+                    "input_type": "dropdown",
+                    "possible_values_generator_type": "given",
+                    "possible_values_generator_variable": {
+                        "true": "Yes Allow wrap-around",
+                        "false": "No, dont allow wrap-around"
+                    }
+                }
+            },
+            "carousel_fullscreen": {
+                "config": {
+                    "name": "Carousel | Fullscreen option",
+                    "description": "Gives user the ability to go full screen carousel",
+                    "input_type": "dropdown",
+                    "possible_values_generator_type": "given",
+                    "possible_values_generator_variable": {
+                        "true": "Yes, add a tiny button for that in top-right corner of carousel",
+                        "false": "No, dont allow full-screen option"
+                    }
+                }
+            },
+            "carousel_autoPlay": {
+                "config": {
+                    "name": "Carousel | Auto-Play",
+                    "description": "Sets whether carousel do auto-play",
+                    "input_type": "dropdown",
+                    "possible_values_generator_type": "given",
+                    "possible_values_generator_variable": {
+                        "true": "Yes",
+                        "false": "No"
+                    }
+                }
+            },
+            "carousel_dots_to_bar": {
+                "config": {
+                    "name": "Carousel | Slider type",
+                    "description": "Slider type of carousel",
+                    "input_type": "dropdown",
+                    "possible_values_generator_type": "given",
+                    "possible_values_generator_variable": {
+                        "true": "Horizontal Bar",
+                        "false": "Harizontal Dots"
+                    }
+                }
+            },
+            "is_widescreen_slider": {
+                "config": {
+                    "name": "Carousel | Layout Type",
+                    "description": "You can choose whether carousel takes up full wide screen or stick to contained\/compact",
+                    "input_type": "dropdown",
+                    "possible_values_generator_type": "given",
+                    "possible_values_generator_variable": {
+                        "true": "Widescreen",
+                        "false": "Contained"
+                    }
+                }
+            },
+            "widescreen_full_image": {
+                "config": {
+                    "name": "Carousel | Images Size",
+                    "description": "Size of each image in carousel",
+                    "input_type": "dropdown",
+                    "possible_values_generator_type": "given",
+                    "possible_values_generator_variable": {
+                        "true": "Widescreen[mostly for widescreen layout]",
+                        "false": "Right fit"
+                    }
+                }
+            },
+            "image_direction": {
+                "config": {
+                    "name": "Artist Image Direction",
+                    "description": "Change artist's image direction on screen",
+                    "input_type": "dropdown",
+                    "possible_values_generator_type": "given",
+                    "possible_values_generator_variable": {
+                        "left": "Left side of the screen",
+                        "right": "Right side of the screen"
+                    }
+                }
+            },
+            "reverse_order": {
+                "config": {
+                    "name": "Items Display Order",
+                    "description": "",
+                    "input_type": "dropdown",
+                    "possible_values_generator_type": "given",
+                    "possible_values_generator_variable": [
+                        "Ascending Order",
+                        "Descending Order"
+                    ]
+                }
+            },
+            "load_per_page": {
+                "config": {
+                    "name": "Load Items per Page",
+                    "description": "Number of items to load when user hit bottom of the page",
+                    "input_type": "dropdown",
+                    "possible_values_generator_type": "given",
+                    "possible_values_generator_variable": {
+                        "3": "3",
+                        "4": "4",
+                        "6": "6",
+                        "10": "10",
+                        "12": "12"
+                    }
+                }
+            },
+            "contact_menu_name": {
+                "config": {
+                    "name": "Name of the active Contact Page",
+                    "description": "Required, when user clicks shop item, he\/she will be taken to contact page",
+                    "input_type": "text"
+                }
+            },
+            "item_display_type": {
+                "config": {
+                    "name": "Shop Item - Layout",
+                    "description": "Choose layout for your items in shop page",
+                    "input_type": "dropdown",
+                    "possible_values_generator_type": "given",
+                    "possible_values_generator_variable": {
+                        "item_as_btn": "Shows Button",
+                        "item_without_btn": "No Button",
+                        "item_price_as_btn": "Shows Button + Price as Button text",
+                        "item_without_btn_with_click": "No Button + Click on item to contact sales"
+                    }
+                }
+            },
+            "contact_form_title": {
+                "config": {
+                    "name": "Contact Form Title - Desktop",
+                    "description": "Title of the contact form to display for desktop users",
+                    "input_type": "text"
+                }
+            },
+            "contact_form_title_mobile": {
+                "config": {
+                    "name": "Contact Form Title - Mobile",
+                    "description": "Title of the contact form to display for mobile users",
+                    "input_type": "text"
+                }
+            },
+            "contact_form_description": {
+                "config": {
+                    "name": "Contact Form Description",
+                    "description": "Descrition of the contact form to display",
+                    "input_type": "text"
+                }
+            },
+            "html_content": {
+                "config": {
+                    "name": "HTMl Content",
+                    "description": "Enter your HTML here, To add line breaks use < br > tag, for italic < span class='italic' >italic content< \/ span > etc.",
+                    "input_type": "textarea"
+                }
+            }
+        },
+        "theme": {
+            "active_theme": {
+                "config": {
+                    "name": "Active theme",
+                    "description": "Sets active theme for your website",
+                    "input_type": "dropdown",
+                    "possible_values_generator_type": "directory",
+                    "possible_values_generator_variable": "\/themes\/"
+                }
+            },
+            "theme_path": {
+                "config": {
+                    "name": "Theme path",
+                    "description": "Actual theme path to look for themes",
+                    "input_type": "text"
+                }
+            },
+            "templates_path": {
+                "config": {
+                    "name": "Tempaltes path",
+                    "description": "Actual path to look for templates inside theme folder",
+                    "input_type": "text"
+                }
+            }
+        },
+        "website": {
+            "name": {
+                "config": {
+                    "name": "Website Name",
+                    "description": "The name of the website",
+                    "input_type": "text"
+                }
+            },
+            "title": {
+                "config": {
+                    "name": "Title",
+                    "description": "Default title of the website, however each page got its own title, it barely sees the day",
+                    "input_type": "text"
+                }
+            },
+            "url": {
+                "config": {
+                    "name": "URL",
+                    "description": "Actual public link of the website, used to linkage process of assets",
+                    "input_type": "text"
+                }
+            },
+            "is_path": {
+                "config": {
+                    "name": "Sub-Path",
+                    "description": "Is website installed on sub-path\/sub-domain",
+                    "input_type": "dropdown",
+                    "possible_values_generator_type": "given",
+                    "possible_values_generator_variable": {
+                        "1": "Yes",
+                        "0": "No"
+                    }
+                }
+            },
+            "path": {
+                "config": {
+                    "name": "Sub-Path value",
+                    "description": "Subpath value will be used only if Sub-Path is set to Yes above",
+                    "input_type": "text"
+                }
+            },
+            "version": {
+                "config": {
+                    "name": "Version",
+                    "description": "Can be used to enforce new assets to all clients.[force-clear-browser-cache]",
+                    "input_type": "text"
+                }
+            },
+            "language": {
+                "config": {
+                    "name": "Language",
+                    "description": "Actively look and presets language",
+                    "input_type": "text"
+                }
+            },
+            "logo": {
+                "config": {
+                    "name": "Logo file",
+                    "description": "Path to logo file inside Brand folder",
+                    "input_type": "dropdown",
+                    "possible_values_generator_type": "files",
+                    "possible_values_generator_variable": "\/profiles\/%editing_profile%\/brand\/*.{jpg,png,gif}"
+                }
+            },
+            "favicon": {
+                "config": {
+                    "name": "Favicon path",
+                    "description": "Path to favicon inside Brand folder",
+                    "input_type": "dropdown",
+                    "possible_values_generator_type": "files",
+                    "possible_values_generator_variable": "\/profiles\/%editing_profile%\/brand\/*.{jpg,png,gif,ico}"
+                }
+            }
+        },
+        "seo": {
+            "default_title": {
+                "config": {
+                    "name": "Default SEO title",
+                    "description": "",
+                    "input_type": "text"
+                }
+            },
+            "default_description": {
+                "config": {
+                    "name": "Default SEO description",
+                    "description": "",
+                    "input_type": "text"
+                }
+            },
+            "default_site_name": {
+                "config": {
+                    "name": "Default SEO Site name",
+                    "description": "Website name passed to meta tags[default]",
+                    "input_type": "text"
+                }
+            },
+            "default_type": {
+                "config": {
+                    "name": "SEO website embed type",
+                    "description": "Article is the best option here, however critics are allowed not wished here",
+                    "input_type": "text"
+                }
+            },
+            "default_image": {
+                "config": {
+                    "name": "Default SEO image",
+                    "description": "Will list image uploded in the Brand folder only",
+                    "input_type": "dropdown",
+                    "possible_values_generator_type": "files",
+                    "possible_values_generator_variable": "\/profiles\/%editing_profile%\/brand\/*.{jpg,png,gif}"
+                }
+            },
+            "default_image_width": {
+                "config": {
+                    "name": "SEO Image property:width[px]",
+                    "description": "",
+                    "input_type": "text"
+                }
+            },
+            "default_image_height": {
+                "config": {
+                    "name": "SEO Image property:height[px]",
+                    "description": "",
+                    "input_type": "text"
+                }
+            }
+        },
+        "mailer": {
+            "mailing_log": {
+                "config": {
+                    "name": "Mailing logs",
+                    "description": "Sets whether mailer logs every email thats been sent",
+                    "input_type": "dropdown",
+                    "possible_values_generator_type": "given",
+                    "possible_values_generator_variable": {
+                        "1": "Yes",
+                        "0": "No"
+                    }
+                }
+            },
+            "recieve_acknowledgements": {
+                "config": {
+                    "name": "Your email address, you'll receive acknowledgements here",
+                    "description": "Owner email",
+                    "input_type": "text"
+                }
+            },
+            "php_from": {
+                "config": {
+                    "name": "PHP Core Mailing Facility | Sent-from address",
+                    "description": "Sets sent-from email address",
+                    "input_type": "text"
+                }
+            },
+            "php_reply_to": {
+                "config": {
+                    "name": "PHP Core Mailing Facility | Repy-to address",
+                    "description": "Sets reply-to email address",
+                    "input_type": "text"
+                }
+            },
+            "mailer_use_smtp": {
+                "config": {
+                    "name": "Mailer type",
+                    "description": "PHP Core Mailing Facility or SMTP Server, you can configure both and active will be used",
+                    "input_type": "dropdown",
+                    "possible_values_generator_type": "given",
+                    "possible_values_generator_variable": {
+                        "1": "Use SMTP Server",
+                        "0": "Use PHP Core Mailing Facility"
+                    }
+                }
+            },
+            "smtp_server": {
+                "config": {
+                    "name": "SMTP Server | Server Address",
+                    "description": "Sets address\/Domain of SMTP server",
+                    "input_type": "text"
+                }
+            },
+            "smtp_username": {
+                "config": {
+                    "name": "SMTP Server | Username",
+                    "description": "Sets username for the SMTP server",
+                    "input_type": "text"
+                }
+            },
+            "smtp_password": {
+                "config": {
+                    "name": "SMTP Server | Password",
+                    "description": "Sets password for the SMTP server",
+                    "input_type": "text"
+                }
+            },
+            "smtp_from": {
+                "config": {
+                    "name": "SMTP Server | sent-from email address",
+                    "description": "Sets sent-from email address for emails sent through SMTP server",
+                    "input_type": "text"
+                }
+            }
+        },
+        "contact": {
+            "max_attempts": {
+                "config": {
+                    "name": "Max-Contact messages",
+                    "description": "Maxium number of  contact messages a user can send per\/user\/ip address in single day",
+                    "input_type": "dropdown",
+                    "possible_values_generator_type": "given",
+                    "possible_values_generator_variable": {
+                        "1": "1",
+                        "2": "2",
+                        "3": "3",
+                        "4": "4",
+                        "5": "5",
+                        "6": "6",
+                        "7": "7",
+                        "8": "8",
+                        "9": "9",
+                        "10": "10",
+                        "11": "11",
+                        "12": "12",
+                        "13": "13",
+                        "14": "14",
+                        "15": "15"
+                    }
+                }
+            },
+            "contact_acknowledgement_message": {
+                "config": {
+                    "name": "Support Message",
+                    "description": "Sets support message in acknowledgement email message thats sent to user after he submits contact form. < br > tag adds line break in the message.",
+                    "input_type": "textarea"
+                }
+            },
+            "contact_acknowledgement_support_email": {
+                "config": {
+                    "name": "Support Email",
+                    "description": "Sets support email address in acknowledgement email message thats sent to user after he submits contact form",
+                    "input_type": "text"
+                }
+            },
+            "contact_acknowledgement_support_contact": {
+                "config": {
+                    "name": "Support Email",
+                    "description": "Sets support contact address in acknowledgement email message thats sent to user after he submits contact form",
+                    "input_type": "text"
+                }
+            }
+        },
+        "icons": {
+            "footer": {
+                "config": {
+                    "name": "Social icons footer",
+                    "description": "Type of social icons to display in the footer",
+                    "input_type": "dropdown",
+                    "possible_values_generator_type": "given",
+                    "possible_values_generator_variable": {
+                        "colored": "Colored",
+                        "filled": "Vector"
+                    }
+                }
+            },
+            "header": {
+                "config": {
+                    "name": "Social icons header",
+                    "description": "Type of social icons to display in the header",
+                    "input_type": "dropdown",
+                    "possible_values_generator_type": "given",
+                    "possible_values_generator_variable": {
+                        "colored": "Colored",
+                        "filled": "Vector"
+                    }
+                }
+            }
+        },
+        "social": {
+            "facebook": "http:\/\/github.com\/hamsbrar",
+            "instagram": "https:\/\/github.com\/hamsbrar",
+            "twitter": "https:\/\/github.com\/hamsbrar"
+        },
+        "footer": {
+            "rights_reserved_messge": {
+                "config": {
+                    "name": "Footer message left",
+                    "description": "Sets a message in bottom-left of the footer",
+                    "input_type": "text"
+                }
+            },
+            "developer_message": {
+                "config": {
+                    "name": "Footer message right",
+                    "description": "Sets a message in bottom-right of the footer",
+                    "input_type": "text"
+                }
+            },
+            "developer_link": {
+                "config": {
+                    "name": "Footer message left - link to",
+                    "description": "Takes the user to below link when text in the botton-right is clicked",
+                    "input_type": "text"
+                }
+            }
+        },
+        "assets": {
+            "CSS_MAIN_URL": "\/styles\/main",
+            "CSS_INCLUDES_URL": "\/styles\/includes",
+            "JS_MAIN_URL": "\/scripts\/main",
+            "JS_INCLUDES_URL": "\/scripts\/includes",
+            "FONTS_MAIN_URL": "\/fonts",
+            "GRAPHICS_MAIN_URL": "\/graphics"
+        }
+    }
+}

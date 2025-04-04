@@ -1,0 +1,182 @@
+// typogrpahy module, v0.01
+
+// module properties
+@module-name: 'typography';
+@module-file-name: 'index.less';
+
+// --------------------------- heading, h1,h2...
+
+// heading tags(.classes), .h1, .h2 ... (system will auto-add a prefixing dot(.) to each class)
+@typography-headings-classes: h15, h14, h13, h12, h11, h10, h9, h8, h7, h6, h5, h4, h3, h2, h1;
+
+@typography-headings-color: @theme-black-color;
+
+@typography-headings-margin: 0rem, 0.2rem;
+
+@typography-headings-font_size: 2.5rem;
+@typography-headings-font_size-gap: 0.13rem;
+@typography-headings-font_size-min: 0.5rem;
+
+@typography-auto-control-font_weight: false;
+
+@typography-headings-font_weight: 900;
+@typography-headings-font_weight-gap: 20;
+@typography-headings-font_weight-min: 600;
+
+@typography-headings-letter_spacing: 3px;
+@typography-headings-letter_spacing-gap: 0.3px;
+@typography-headings-letter_spacing-min: 0px;
+
+// heading with 'normal' class
+@typography-normal_headings-font_weight: 700;
+@typography-normal_headings-letter_spacing: 3px;
+@typography-normal_headings-letter_spacing-gap: 0.5px;
+@typography-normal_headings-letter_spacing-min: 0px;
+
+// heading with 'slim' class
+@typography-slim_headings-font_weight: 500;
+@typography-slim_headings-letter_spacing: 2px;
+@typography-slim_headings-letter_spacing-gap: 0.5px;
+@typography-slim_headings-letter_spacing-min: 0px;
+
+// --------------------- paragraph
+
+@typography-paragraphs-classes: p;
+
+@typography-paragraphs-color: @theme-black-color;
+@typography-paragraphs-margin: 0;
+@typography-paragraphs-padding: 0;
+@typography-paragraphs-font_size: 1rem;
+@typography-paragraphs-font_weight: inherit;
+@typography-paragraphs-letter_spacing: 0.02rem;
+
+// --------------------- code
+
+@typography-codes-classes: code;
+
+@typography-codes-color: @theme-black-color;
+@typography-codes-background-color: @theme-gray-color;
+
+@typography-codes_block-margin: 0;
+@typography-codes_block-padding: 0.06rem, 0.05rem;
+@typography-codes_block-radius: 0rem;
+@typography-codes_block-font_size: 0.9rem;
+@typography-codes-font_weight: normal;
+@typography-codes-letter_spacing: 0.05rem;
+@typography-codes-line_height: 1.2;
+
+@typography-codes-font_size: 0.85rem;
+@typography-codes-radius: 0.1rem;
+@typography-codes-margin: 0;
+@typography-codes-padding: 0.10rem, 0.4rem;
+
+// --------------------- pre
+
+@typography-pres-classes: pre;
+
+@typography-pres-color: @theme-black-color;
+@typography-pres-background-color: @theme-gray-color;
+
+@typography-pres-margin: 0;
+@typography-pres-padding: 0.8rem, 0.8rem;
+@typography-pres-radius: 0rem;
+@typography-pres-font_size: 1rem;
+@typography-pres-font_weight: normal;
+@typography-pres-letter_spacing: 0rem;
+@typography-pres-line_height: 1.2;
+
+// --------------------- blockquote
+
+@typography-blockquotes-classes: blockquote;
+
+@typography-blockquotes-seprator-width: 0.4rem;
+
+@typography-blockquotes-seprator-color: @theme-accent-color;
+
+@typography-blockquotes-color: @theme-font_color;
+@typography-blockquotes-background-color: @theme-gray-color;
+
+@typography-blockquotes-margin: 0rem, 0rem, 0.2rem, 0rem;
+@typography-blockquotes-padding: 0.6rem, 0.6rem, 0.6rem, 1rem;
+@typography-blockquotes-radius: 0rem;
+@typography-blockquotes-font_size: 1.05rem;
+@typography-blockquotes-font_weight: normal;
+@typography-blockquotes-letter_spacing: 0rem;
+@typography-blockquotes-line_height: 1.2;
+@typography-blockquotes-heading-margin: 0rem, 0rem, 0.2rem, 0rem;
+@typography-blockquotes-heading-font_size: 1.3rem;
+@typography-blockquotes-heading-letter_spacing: -0.07rem;
+
+// --------------------- lists
+
+@typography-lists-classes: ol, li;
+
+@typography-lists-margin: 0rem, 0rem, 0.5rem, 0rem;
+@typography-lists-padding: 0rem;
+
+// --------------------- list-items
+
+@typography-list_items-classes: li;
+
+@typography-list_items-color: @theme-font_color;
+
+@typography-list_items-margin: 0rem, 0rem, 0.2rem, 0rem;
+@typography-list_items-padding: 0rem;
+@typography-blockquotes-radius: 0rem;
+@typography-list_items-font_size: 1rem;
+@typography-list_items-font_weight: normal;
+@typography-list_items-letter_spacing: 0rem;
+@typography-list_items-line_height: 1.3;
+
+// --------------------- hrs
+
+@typography-hrs-classes: hr;
+
+@typography-hrs-color: @theme-gray-color;
+
+@typography-hrs-height: 3px;
+@typography-hrs_thick-height: 6px;
+@typography-hrs_thin-height: 1px;
+@typography-hrs-margin: 0.7rem, 1rem;
+@typography-hrs_extra-margin: 2rem, 1.8rem;
+@typography-hrs_full-margin: 0.2rem, 0rem;
+
+// --------------------- links
+
+@typography-links-classes: a;
+
+@typography-links-margin: 0rem, 0.2rem;
+@typography-links-default-underlined: true;
+
+@typography-links-color: @color-blue;
+
+@typography-links-font_weight: 500;
+@typography-links-letter_spacing: inherit;
+
+@typography-links-underline-width: 1px;
+@typography-links-underline-color: @theme-gray-color;
+
+// ----------- typography over-riders
+
+// font-weights
+@typography-font_sizes-classes: s15, s14, s13, s12, s11, s10, s9, s8, s7, s6, s5, s4, s3, s2, s1;
+@typography-font_sizes-start: 2.5rem;
+@typography-font_sizes-gap: 0.14rem;
+@typography-font_sizes-min: 0.3rem;
+
+// will generate font weights: 900, 800, 700(please note that only valid values are multiplier of 100)
+@typography-font_weights-classes: b9, b8, b7, b6, b5, b4, b3, b2, b1;
+@typography-font_weights-start: 900;
+@typography-font_weights-gap: 100;
+@typography-font_weights-min: 100;
+
+@typography-overriders-light_gripped-letter_spacing: -0.03rem;
+@typography-overriders-gripped-letter_spacing: -0.07rem;
+@typography-overriders-tight_gripped-letter_spacing: -0.1rem;
+
+// -----------------------------------------
+
+@import "@{modules-loading-path}/@{module-name}/mixins.less";
+
+// compile module file
+@import "@{modules-loading-path}/@{module-name}/@{module-file-name}";

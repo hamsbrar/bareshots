@@ -1,0 +1,80 @@
+// mixins
+.alerts-mixin-all() {
+
+    .alert {
+
+        display: flex;
+
+        .padding(15px, 20px);
+
+        .margin-bottom(10px);
+    
+        // inner paragraph styles
+        p:last-child {
+            .margin-bottom(0px);
+        }
+    
+        // alert icon
+        .alert-icon {
+            flex: 0 1 auto;
+            .margin-right(7px);
+            color: @color-gray-d2;
+        }
+    
+        .alert-text {
+            flex: 1 1 auto;
+        }
+
+        .alert-heading {
+            .prop.block;
+            margin-bottom: 5px;
+        }
+
+        // large variant
+        &.large {
+            .alert-icon {
+                .margin-right(15px);
+                & .icon {
+                    font-size: 2rem;
+                    line-height: 2rem;
+                }
+            }
+        }
+    
+        // mixin
+        .generate-alert-colors(@color) {
+
+            .framework-mixin-color-variations(@color);
+
+            background-color: lighten(@color-l2,7%);
+    
+            .alert-icon {
+                color: @color-d2;
+            }
+
+        }
+    
+        // colors
+        & {
+            .generate-alert-colors(@alert-color);
+        }
+    
+        &.accent {
+            .generate-alert-colors(@alert-accent-color);
+        }
+    
+        &.success {
+            .generate-alert-colors(@alert-success-color);
+        }
+    
+        &.warning {
+            .generate-alert-colors(@alert-warning-color);
+        }
+    
+        &.danger {
+            .generate-alert-colors(@alert-danger-color);
+        }
+
+    }
+
+}

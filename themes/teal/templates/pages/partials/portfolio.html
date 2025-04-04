@@ -1,0 +1,209 @@
+{$MASTER->insert-page_header}
+
+{$MASTER->insert-page_navigation}
+
+<div id="portfolio_container" class="grid w3-animate-bottom">
+  <div class="grid-sizer"></div>
+</div>
+
+<div id="footer_trigger"></div>
+
+{$MASTER->insert-page_footer}
+
+<div id="fullscreen_view" class="fullscreen-container noselect" style="display: none;">
+
+  <div class="">
+
+    <img class="display-middle"></img>
+
+    <div id="left_btn" class="display-left-middle middle-btn w3-animate-left" onclick="previous_image();"><span class="material-icons">arrow_back_ios</span></div>
+    <div id="right_btn" class="display-right-middle middle-btn w3-animate-right" onclick="next_image();"><span class="material-icons">arrow_forward_ios</span></div>
+    <div id="top_btn" class="display-right-top middle-btn middle-btn-red" onclick="close_view();"><span class="material-icons">close</span></div>
+
+    <input type="text" style="display: none;" value="" id="fullscreen_view_active_image">
+
+  </div>
+
+</div>
+
+<script>
+
+var portfolio_images = JSON.parse('{$MASTER->insert-images}');
+
+var last_loaded_image = -1;
+
+var load_per_page = {$MASTER->insert-load_per_page};
+
+var current_loaded_number = 0;
+
+var current_viewing_image = 0;
+
+var previous_random = 1;
+
+var $grid = '';
+
+var stop_loading = false;
+
+var first_load = true;
+
+// on load
+$(() => 
+{
+  $grid = $('#portfolio_container').isotope({
+    itemSelector: '.grid-item',
+    percentPosition: true,
+    masonry: {
+      columnWidth: '.grid-sizer'
+    }
+  });
+
+  if($(window).width() > 900 && {$MASTER->insert-page_animate_scroll_to_content})
+  {
+    $('html, body').animate({
+      scrollTop: $("#app_inner_page").offset().top
+    });
+  }
+
+  load_image()
+});
+
+function close_view()
+{
+  $("#fullscreen_view").fadeOut();
+}
+
+function previous_image()
+{
+  if(portfolio_images.hasOwnProperty(current_viewing_image - 1))
+
+  view_image(current_viewing_image - 1);
+
+  else
+
+  $("#left_btn").fadeOut();
+}
+
+function next_image()
+{
+  if(portfolio_images.hasOwnProperty(current_viewing_image + 1))
+
+  view_image(current_viewing_image + 1);
+
+  else
+
+  $("#right_btn").fadeOut();
+}
+
+function view_image(image_index)
+{ 
+  current_viewing_image = image_index;
+
+  if(portfolio_images.hasOwnProperty(current_viewing_image + 1))
+
+  $("#right_btn").fadeIn();
+
+  else
+
+  $("#right_btn").fadeOut();
+  
+  if(portfolio_images.hasOwnProperty(current_viewing_image - 1))
+
+  $("#left_btn").fadeIn()
+
+  else
+
+  $("#left_btn").fadeOut();
+
+  $("#fullscreen_view").find('img').replaceWith('<img class="display-middle" src="'+portfolio_images[image_index].image_src+'">')
+  
+  $("#fullscreen_view").fadeIn();
+}
+
+$(window).scroll(function() 
+{
+  if(stop_loading && $("#footer_trigger").isOnScreen()) 
+  {
+    stop_loading = false;
+    load_image();
+  }
+});
+
+function load_image()
+{
+  // if already loaded load per page or no more iamges
+  if(current_loaded_number >= load_per_page || !portfolio_images.hasOwnProperty(last_loaded_image + 1))
+  {
+    current_loaded_number = 0;
+
+    if($("#footer_trigger").isOnScreen()) 
+    {
+      stop_loading = false;
+      load_image();
+    }
+    else
+    {
+      stop_loading = true;
+    }
+  }
+  else
+  {
+    let html_class = '';
+
+    let new_random = 1;
+
+    while(new_random == previous_random)
+
+    new_random = sys_random(1, 3);
+
+    previous_random = new_random;
+
+    switch (new_random)
+    {
+      case 1: html_class = 'grid-item w3-trans'; break;
+      case 2: html_class = 'grid-item w3-trans grid-item--height2'; break;
+      case 3: html_class = 'grid-item w3-trans grid-item--width2 grid-item--height2'; break;
+    }
+
+    last_loaded_image++;
+
+    $item = $('<div class="' + html_class + '"><div onclick="view_image('+last_loaded_image+')" class="grid-image-item item w3-trans js-not-loaded" data-src="'+ url + '/thumb.php?w=600&h=600&src=' + portfolio_images[last_loaded_image].image_src+'" data-original-src="'+portfolio_images[last_loaded_image].image_src+'"></div></div>');
+
+    $grid.append( $item ).isotope( 'appended', $item);
+
+    if(first_load && load_per_page < 16 && $(window).width() < 900)
+    {
+      current_loaded_number = -1 * (16 - load_per_page);
+      first_load = false;
+    }
+
+    current_loaded_number++;
+
+    lazy_loading();
+
+    setTimeout(() => {
+      load_image();
+    }, 200);
+  }
+}
+
+function lazy_loading()
+{
+  setTimeout(() => 
+  {
+    let elements = $('.js-not-loaded').first();
+
+    if(elements.length)
+    {
+      elements.fadeTo('slow', 0.3, function()
+      {
+        elements.css('background-image', 'url(' +  elements.data('src') + ')');
+
+      }).fadeTo('slow', 1).removeClass('js-not-loaded');
+
+      // legacy version
+      // elements.css('background-image', 'url(' +  elements.data('src') + ')').removeClass('js-not-loaded');
+    }
+  }, 500);
+}
+
+</script>

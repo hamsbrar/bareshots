@@ -1,0 +1,12 @@
+{
+    "page_settings": {
+        "page_title": "",
+        "page_description": "",
+        "hide_page_title_on_desktop": "hide-desktop hide-desktop-plus",
+        "page_animate_scroll_to_content": "1 == 1",
+        "page_quote": "A sample quote at contact page",
+        "contact_form_title": "Contact",
+        "contact_form_title_mobile": "Contact",
+        "contact_form_description": "Contact Descrption"
+    }
+}

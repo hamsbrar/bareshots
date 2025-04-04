@@ -1,0 +1,115 @@
+@import (reference) "rtl-functions.less";
+
+.border-top(@border, @endfix) {
+    border-top: ~"@{border} @{endfix}";
+}
+
+.border-bottom(@border, @endfix) {
+    border-bottom: ~"@{border} @{endfix}";
+}
+
+.border-right(@border, @endfix) {
+    .framework-mixin-rtl-padMar(border, "right", @border, ~"", ~"@{endfix}");
+}
+
+.border-left(@border, @endfix) {
+    .framework-mixin-rtl-padMar(border, "left", @border, ~"", ~"@{endfix}");
+}
+
+.radius(@radius) {
+    border-radius: @radius;
+}
+
+.radius(@one-three, @two-four) {
+    border-radius: .framework-mixin-rtl-rad(padding, @one-three, @two-four, @one-three, @two-four)[];
+}
+
+.radius(@one, @two-four, @three) {
+    border-radius: .framework-mixin-rtl-rad(padding, @one, @two-four, @three, @two-four)[];
+}
+
+.radius(@one, @two, @three, @four) {
+    border-radius: .framework-mixin-rtl-rad(padding, @one, @two, @three, @four)[];
+}
+
+.padding(@padding) {
+    padding: @padding;
+}
+
+.padding-top(@padding, @endfix: "") {
+    padding-top: @padding ~"@{endfix}";
+}
+
+.padding-bottom(@padding, @endfix: "") {
+    padding-bottom: @padding ~"@{endfix}";
+}
+
+.padding(@top-bottom, @right-left) {
+    padding: ~"@{top-bottom} @{right-left}";
+}
+
+.padding(@top, @right, @bottom, @left) {
+    padding: .framework-mixin-rtl-padMar(padding, @top, @right, @bottom, @left, ~"", ~"")[];
+}
+
+.padding-right(@padding, @endfix: "") {
+    .framework-mixin-rtl-padMar(padding, "right", @padding, ~"", ~"@{endfix}");
+}
+
+.padding-left(@padding, @endfix: "") {
+    .framework-mixin-rtl-padMar(padding, "left", @padding, ~"", ~"@{endfix}");
+}
+
+.margin(@margin) {
+    margin: @margin;
+}
+
+.margin-top(@margin, @endfix: "") {
+    margin-top: @margin ~"@{endfix}";
+}
+
+.margin-bottom(@margin, @endfix: "") {
+    margin-bottom: @margin ~"@{endfix}";
+}
+
+.margin(@top-bottom, @right-left) {
+    margin: ~"@{top-bottom} @{right-left}";
+}
+
+.margin(@top, @right, @bottom, @left) {
+    margin: .framework-mixin-rtl-padMar(margin, @top, @right, @bottom, @left, ~"", ~"")[];
+}
+
+.margin-right(@margin, @endfix: "") {
+    .framework-mixin-rtl-padMar(margin, "right", @margin, ~"",~"@{endfix}");
+}
+
+.margin-left(@margin, @endfix: "") {
+    .framework-mixin-rtl-padMar(margin, "left", @margin, ~"", ~"@{endfix}");
+}
+
+.left(@int) {
+    @direction: .framework-mixin-rtl-direction("left")[];
+    @{direction}: @int;
+}
+
+.right(@int) {
+    @direction: .framework-mixin-rtl-direction("right")[];
+    @{direction}: @int;
+}
+
+.float-left() {
+    float: .framework-mixin-rtl-direction("left")[];
+}
+
+.float-right() {
+    float: .framework-mixin-rtl-direction("right")[];
+}
+
+.text-left {
+    text-align: .framework-mixin-rtl-direction("left")[];
+}
+
+.text-right() {
+    text-align: .framework-mixin-rtl-direction("right")[];
+}

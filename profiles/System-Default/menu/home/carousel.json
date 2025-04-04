@@ -1,0 +1,38 @@
+{
+    "forest.jpg": {
+        "title": "title",
+        "description": "description",
+        "load_page": "portfolio",
+        "load_sub_page": "sports"
+    },
+    "forest2.jpg": {
+        "title": "Imge 2",
+        "description": "description 2",
+        "load_page": "portfolio",
+        "load_sub_page": "sports"
+    },
+    "forest3.jpg": {
+        "title": "Imge 3",
+        "description": "description 2",
+        "load_page": "portfolio",
+        "load_sub_page": "sports"
+    },
+    "PvFAW-Iv9KA.jpg": {
+        "title": "bare nature",
+        "description": "lifes biggest treasure, capture it with bare!",
+        "load_page": "portfolio",
+        "load_sub_page": "life"
+    },
+    "events-01.jpg": {
+        "title": "party time!",
+        "description": "capturing your friends & loved ones since 1975!",
+        "load_page": "portfolio",
+        "load_sub_page": "events"
+    },
+    "sports-08.jpg": {
+        "title": "hardwork!",
+        "description": "theres always essence to be captured in every sport!",
+        "load_page": "portfolio",
+        "load_sub_page": "sports"
+    }
+}

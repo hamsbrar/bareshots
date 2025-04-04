@@ -1,0 +1,73 @@
+// mixins
+.preloaders-mixin-all() {
+
+    .preloader {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+    
+        span {
+            display: block;
+            width: 20px;
+            height: 20px;
+            border-width: 2px;
+            border-style: solid;
+            border-color: @preloaders-circle-color;
+            border-top-color: @preloaders-bar-color;
+            border-radius: 40px;
+        }
+
+        &.black span {
+            border-color: fadeout(@preloaders-circle-color, 30%);
+            border-top-color: @theme-black-color;
+            
+        }
+
+        &.white span {
+            border-color: fadeout(@preloaders-circle-color, 20%);
+            border-top-color: @theme-white-color;
+            
+        }
+    
+        &.running span {
+            @keyframes preloader-rotate {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+    
+            animation: preloader-rotate 0.6s linear infinite;
+        }
+    
+        &.hidden {
+            display: none;
+        }
+    
+    
+        &.small {
+            width: 16px;
+            height: 16px;
+    
+            span {
+                width: 16px;
+                height: 16px;
+            }
+        }
+    
+        &.big {
+            width: 40px;
+            height: 40px;
+    
+            span {
+                width: 40px;
+                height: 40px;
+                border-width: 3px;
+            }
+        }
+    }
+
+}

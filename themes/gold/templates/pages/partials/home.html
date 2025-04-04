@@ -1,0 +1,109 @@
+<div id="app_inner_page" class="block full left center">
+    <div class="max-1200 center">
+    
+{$MASTER->insert-page_header}
+
+{$MASTER->insert-carousel}
+
+<script>
+    $(() => load_flickity())
+
+    var global_ficklity = null;
+
+    function load_flickity()
+    {
+        global_ficklity = $('.carousel').flickity
+        ({
+            autoPlay: {$MASTER->insert-autoPlay},
+            fullscreen: {$MASTER->insert-fullscreen},
+            wrapAround: {$MASTER->insert-wrapAround}
+        });
+        
+        global_ficklity.on( 'fullscreenChange.flickity', function( event, isFullscreen ) 
+        {
+            if(isFullscreen)    
+            {
+                $('.carousel-cell.carousel-item.is-selected').find('.display-carousel-container').fadeOut();
+            }
+            else
+            {
+                $('.carousel-cell.carousel-item.is-selected').find('.display-carousel-container').fadeIn();
+            }
+        });
+
+        global_ficklity.on( 'change.flickity', function( event, index )
+        {
+            if($('.carousel').hasClass('is-fullscreen')) return;
+
+            $('.carousel-cell').not('.is-selected').find('.display-carousel-container').hide(function()
+            {
+                $('.is-selected').find('.display-carousel-container').show();
+            })
+        });
+    }
+</script>
+
+<style>
+
+    {$MASTER->insert-carousel_dots_settings}
+
+    .flickity-enabled.is-fullscreen {
+        z-index: 10!important;
+    }
+    .flickity-viewport {
+        transition: height 0.2s;
+    }
+    .carousel.is-fullscreen .carousel-cell {
+        height: 100%;
+    }
+    .flickity-page-dots .dot {
+        display: inline-block !important;
+    }
+    .carousel {
+        background: #EEE;
+    }
+    .carousel-cell {
+        width: 66%;
+        height: 400px;
+        margin-right: 10px;
+        background: #ccc;
+        border-radius: 0px;
+    }
+    @media only screen and (max-width: 600px) {
+        .carousel-cell {
+            width: 100%;
+            margin-right: 0px;
+        }
+    }
+    .carousel-cell:before {
+        display: block;
+        text-align: center;
+        line-height: 400px;
+        font-size: 80px;
+        color: white;
+    }
+    </style>
+
+<br><br><br>
+<br><br><br>
+
+<div class="max-800 center text-center">
+    <div class="mar-15-10 h3 quicksand b1 gray userbio">{$MASTER->insert-html_content}</div>
+</div>
+
+</div>
+</div>
+
+{$MASTER->insert-page_footer}
+
+<script>
+    $(() => 
+    {
+        if($(window).width() > 900 && {$MASTER->insert-page_animate_scroll_to_content})
+        {
+            $('html, body').animate({
+                scrollTop: $("#app_inner_page").offset().top
+            });
+        }
+    });
+</script>

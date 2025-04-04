@@ -1,0 +1,109 @@
+{
+    "theme": {
+        "active_theme": "pink",
+        "theme_path": "\/themes\/",
+        "templates_path": "\/templates\/"
+    },
+    "website": {
+        "name": "BareShots Photography",
+        "title": "Welcome to BareShots Photography",
+        "version": "0.24.2",
+        "language": "English",
+        "logo": "\/brand\/logo.jpg",
+        "favicon": "\/brand\/favicon.ico"
+    },
+    "seo": {
+        "default_title": "Bareshots Photography",
+        "default_description": "Capuring the essence of photography since 1975. Available now on the web!",
+        "default_site_name": "Bareshots Photography",
+        "default_type": "article",
+        "default_image": "\/brand\/logo.jpg",
+        "default_image_width": "328",
+        "default_image_height": "397"
+    },
+    "mailer": {
+        "mailing_log": "1",
+        "mailer_use_smtp": "0",
+        "recieve_acknowledgements": "contact@bareshots.com.au",
+        "php_from": "contact@bareshots.com.au",
+        "php_reply_to": "contact@bareshots.com.au",
+        "smtp_server": "smtp.bareshots.com.au",
+        "smtp_username": "contact@bareshots.com.au",
+        "smtp_password": "cpanel_email_password",
+        "smtp_from": "contact@bareshots.com.au"
+    },
+    "contact": {
+        "max_attempts": "5",
+        "contact_acknowledgement_message": "<br>We thought should let you know that your message has been reached to us,<br><br><br>we will catch up with your request soon!<br><br><br>thanks a bunch!",
+        "contact_acknowledgement_support_email": "contact@bareshots.com.au",
+        "contact_acknowledgement_support_contact": "Somewhere, M83, St. S, Australia"
+    },
+    "icons": {
+        "footer": "colored",
+        "header": "filled"
+    },
+    "social": {
+        "behance": "",
+        "blogger": "",
+        "delicious": "",
+        "deviantart": "",
+        "digg": "",
+        "dribbble": "",
+        "dropbox": "",
+        "envato": "",
+        "facebook": "http:\/\/github.com\/hamsbrar",
+        "flickr": "http:\/\/github.com\/hamsbrar",
+        "forrst": "",
+        "foursquare": "http:\/\/github.com\/hamsbrar",
+        "github": "",
+        "google-drive": "",
+        "google-plus": "",
+        "hangouts": "",
+        "instagram": "",
+        "kickstarter": "",
+        "lastfm": "",
+        "linkedin": "",
+        "messenger": "",
+        "myspace": "",
+        "path": "",
+        "photo": "",
+        "picasa": "",
+        "pinterest": "",
+        "plurk": "",
+        "reddit": "",
+        "rss": "",
+        "skype": "",
+        "snapchat": "",
+        "soundcloud": "",
+        "spotify": "",
+        "stumbleupon": "",
+        "team-viewer": "",
+        "tumblr": "",
+        "twitch": "",
+        "twitter": "",
+        "viddler": "",
+        "vimeo": "",
+        "vine": "",
+        "vk": "",
+        "wattpad": "",
+        "whatsapp": "",
+        "wordpress": "",
+        "xing": "",
+        "yahoo": "",
+        "youtube": "",
+        "zootool": ""
+    },
+    "footer": {
+        "rights_reserved_messge": "&copy; 2021 Bareshots Photography | All rights reserved.",
+        "developer_message": "developed@hamsbrar",
+        "developer_link": "https:\/\/github.com\/hamsbrar\/"
+    },
+    "assets": {
+        "CSS_MAIN_URL": "\/styles\/main",
+        "CSS_INCLUDES_URL": "\/styles\/includes",
+        "JS_MAIN_URL": "\/scripts\/main",
+        "JS_INCLUDES_URL": "\/scripts\/includes",
+        "FONTS_MAIN_URL": "\/fonts",
+        "GRAPHICS_MAIN_URL": "\/graphics"
+    }
+}

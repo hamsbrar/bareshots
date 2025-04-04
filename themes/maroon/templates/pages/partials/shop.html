@@ -1,0 +1,21 @@
+{$MASTER->insert-page_header}
+
+<div class="layout responsive header-margin">
+    {$MASTER->insert-items}
+</div>
+
+{$MASTER->insert-page_footer}
+
+<script>
+    $(() => 
+    {
+        if($(window).width() > 900 && {$MASTER->insert-page_animate_scroll_to_content})
+        {
+            $('html, body').animate({
+                scrollTop: $("#app_inner_page").offset().top
+            });
+
+            $('#contact_form .js-name').focus();
+        }
+    });
+</script>

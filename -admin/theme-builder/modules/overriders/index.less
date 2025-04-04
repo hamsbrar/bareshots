@@ -1,0 +1,72 @@
+/*
+---------------------------------------------------------- overriders START ----
+*/
+
+@{framework-class} & {
+
+    .overriders-mixin-all();
+
+    @import "@{mixins-loading-path}/mixins/overriders.less";
+
+    // Print all important properties
+    .important;
+
+    .float-left, .float-left-childs a, .float-left-childs div, .float-left-childs span {
+        float: .framework-mixin-rtl-direction("left")[] !important;
+    }
+    
+    .float-right, .float-right-childs a, .float-right-childs div, .float-right-childs span {
+        float: .framework-mixin-rtl-direction("right")[] !important;
+    }
+    
+    .text-left {
+        text-align: .framework-mixin-rtl-direction("left")[] !important;
+    }
+    
+    .text-right {
+        text-align: .framework-mixin-rtl-direction("right")[] !important;
+    }
+
+    .mobile {
+        max-width: 600px !important; 
+    }
+
+    .tablet {
+        max-width: 992px !important; 
+    }
+
+    .desktop {
+        max-width: 1200px !important;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .hide-mobile{
+            display: none!important;
+        }
+    }
+
+    /* for tablets: */
+    @media only screen and (min-width: 600px) and (max-width: 992px) {
+        .hide-tablet{
+            display: none!important;
+        }
+    }
+
+    /* for desktops, laptops: */
+    @media only screen and (min-width: 992px) and (max-width: 1200px) {
+        .hide-desktop{
+            display: none!important;
+        }
+    }
+
+    @media only screen and (min-width: 1200px) {
+        .hide-desktop-plus{
+            display: none!important;
+        }
+    }
+
+}
+
+/*
+---------------------------------------------------------- overriders END ----
+*/

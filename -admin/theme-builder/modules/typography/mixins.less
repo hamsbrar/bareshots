@@ -1,0 +1,554 @@
+// mixins
+.typography-mixin-headings-default(@typography_temp-headings-classes) {
+
+    // heading correct behaviour
+    .def-tag-headings, h1, h2, h3, h4, h5, h6  {
+        .prop.block;
+    }  
+
+    // adding behaviour to custom classes
+    @{typography_temp-headings-classes} {
+        &@{framework-behaviour-classes} {
+            &:extend(.def-tag-headings);
+        }
+    };
+
+    // set other properties for each heading class
+    h1, h2, h3, h4, h5, h6, @{typography_temp-headings-classes} {  
+    
+        color: @typography-headings-color;
+
+        .framework-mixin-setup-value(margin, @typography-headings-margin);
+
+        font-size: @typography-headings-font_size;
+    
+        font-weight: @typography-headings-font_weight;
+    
+        letter-spacing: @typography-headings-letter_spacing;
+    
+        // generate font weight combination
+        &.slim {
+            font-weight: @typography-slim_headings-font_weight;
+        }
+        &.normal {
+            font-weight: @typography-normal_headings-font_weight;
+        }
+
+        // generate color combinations
+        &.white {
+            color: @theme-white-color;
+        }
+        &.gray {
+            color: @theme-gray-color;
+        }
+        &.alternate {
+            color: @theme-combination-color;
+        }        
+        &.theme {
+            color: @theme-accent-color;
+        }
+        &.link {
+            color: @typography-links-color;
+        }
+        
+    }
+
+}
+
+.typography-mixin-headings-each(@i) when (@i > 0) {
+
+    .typography-mixin-headings-each(@i - 1);
+
+    @class: extract(@typography-headings-classes, @i); 
+
+    .@{class} {
+
+        & when (@typography-auto-control-font_weight =  true) {
+            font-weight: .framework-mixin-weight-gap(@typography-headings-font_weight, @typography-headings-font_weight-gap, @i, @typography-headings-font_weight-min)[];
+        }
+        
+        font-size: .framework-mixin-size-gap(@typography-headings-font_size, @typography-headings-font_size-gap, @i, @typography-headings-font_size-min)[];
+        
+        letter-spacing: .framework-mixin-size-gap(@typography-headings-letter_spacing, @typography-headings-letter_spacing-gap, @i, @typography-headings-letter_spacing-min)[];
+
+        &.normal {
+            letter-spacing: .framework-mixin-size-gap(@typography-normal_headings-letter_spacing, @typography-normal_headings-letter_spacing-gap, @i, @typography-normal_headings-letter_spacing-min)[];
+        }
+
+        &.slim {
+            letter-spacing: .framework-mixin-size-gap(@typography-slim_headings-letter_spacing, @typography-slim_headings-letter_spacing-gap, @i, @typography-slim_headings-letter_spacing-min)[];
+        }
+
+        &.nospacing {
+            .important.nospacing;
+        }
+
+    }
+
+}
+
+.typography-mixin-paragraphs-default(@typography_temp-paragraphs-classes) {
+    
+    .def-tag-paragraphs, p {
+        .important.block;
+        .margin(0);
+    }
+
+    @{typography_temp-paragraphs-classes} {
+        &@{framework-behaviour-classes} {
+            &:extend(.def-tag-paragraphs);
+        }
+    };
+
+    // set other properties for each class
+    p, @{typography_temp-paragraphs-classes} {  
+
+        .margin(@typography-paragraphs-margin);
+
+        .padding(@typography-paragraphs-padding);
+
+        font-family: @theme-readable_font_family;
+
+        color: fadeout(@typography-paragraphs-color, 30%);
+
+        font-size: @typography-paragraphs-font_size;
+    
+        font-weight: @typography-paragraphs-font_weight;
+    
+        letter-spacing: @typography-paragraphs-letter_spacing;
+        
+    }
+
+}
+
+.typography-mixin-codes-default(@typography_temp-codes-classes) {
+    
+    .def-tag-codes, code {
+        font-family: @theme-mono_font_family;
+        .important.normalspace;
+    }
+
+    @{typography_temp-codes-classes} {
+        &@{framework-behaviour-classes} {
+            &:extend(.def-tag-codes);
+        }
+    };
+
+    // set other properties for each class
+    code, @{typography_temp-codes-classes} {  
+
+        .framework-mixin-setup-value(margin, @typography-codes-margin);
+
+        .framework-mixin-setup-value(padding, @typography-codes-padding);
+
+        .framework-mixin-setup-value(radius, @typography-codes-radius);
+
+        font-family: @theme-mono_font_family;
+
+        color: darken(@typography-codes-color, 30%);
+
+        font-size: @typography-codes-font_size;
+    
+        font-weight: @typography-codes-font_weight;
+    
+        letter-spacing: @typography-codes-letter_spacing;
+
+        line-height: @typography-codes-line_height;
+
+        background-color: .framework-mixin-color-variations(@typography-codes-background-color)[@color-l5];
+
+        &.block {
+                   
+            font-size: @typography-codes_block-font_size;
+
+            .framework-mixin-setup-value(margin, @typography-codes_block-margin);
+
+            .framework-mixin-setup-value(padding, @typography-codes_block-padding);
+
+            .framework-mixin-setup-value(radius, @typography-codes_block-radius);
+
+        }
+
+        &.theme {
+            background-color: .framework-mixin-color-variations(@theme-accent-color)[@color-l5];
+            color: .framework-mixin-color-variations(@theme-accent-color)[@color-d1];
+            font-weight: @theme-bold-font_weight;
+        }
+
+        &.red {
+            background-color: .framework-mixin-color-variations(@color-red)[@color-l5];
+            color: .framework-mixin-color-variations(@color-red)[@color-d1];
+            font-weight: @theme-bold-font_weight;
+        }
+        
+    }
+
+}
+
+.typography-mixin-pres-default(@typography_temp-pres-classes) {
+    
+    .def-tag-pres, pre {
+        .important.block;
+        .important.prespace;
+        font-family: @theme-mono_font_family;
+    }
+
+    @{typography_temp-pres-classes} {
+        &@{framework-behaviour-classes} {
+            &:extend(.def-tag-pres);
+        }
+    };
+
+    pre, @{typography_temp-pres-classes} {  
+
+        .framework-mixin-setup-value(margin, @typography-pres-margin);
+
+        .framework-mixin-setup-value(padding, @typography-pres-padding);
+
+        .framework-mixin-setup-value(radius, @typography-pres-radius);
+
+        font-family: @theme-mono_font_family;
+
+        color: fadeout(@typography-pres-color, 30%);
+
+        font-size: @typography-pres-font_size;
+    
+        font-weight: @typography-pres-font_weight;
+    
+        letter-spacing: @typography-pres-letter_spacing;
+
+        line-height: @typography-pres-line_height;
+
+        background-color: .framework-mixin-color-variations(@typography-pres-background-color)[@color-l5];
+
+        &.theme {
+            background-color: .framework-mixin-color-variations(@theme-accent-color)[@color-l5];
+        }
+        
+    }
+
+}
+
+.typography-mixin-blockquotes-default(@typography_temp-blockquotes-classes) {
+    
+    .def-tag-blockquotes, blockquote {
+        .important.block;
+    }
+
+    @{typography_temp-blockquotes-classes} {
+        &@{framework-behaviour-classes} {
+            &:extend(.def-tag-blockquotes);
+        }
+    };
+
+    blockquote, @{typography_temp-blockquotes-classes} { 
+
+        .framework-mixin-setup-value(margin, @typography-blockquotes-margin);
+
+        .framework-mixin-setup-value(padding, @typography-blockquotes-padding);
+
+        .framework-mixin-setup-value(radius, @typography-blockquotes-radius);
+
+        color: @typography-blockquotes-color;
+
+        font-family: @theme-quote_font_family;
+
+        font-weight: @typography-blockquotes-font_weight;
+
+        letter-spacing: @typography-blockquotes-letter_spacing;
+
+        line-height: @typography-blockquotes-line_height;
+
+        background-color: .framework-mixin-color-variations(@typography-blockquotes-background-color)[@color-l4];
+
+        .border-left(@typography-blockquotes-seprator-width, "solid @{typography-blockquotes-seprator-color}");
+
+        &.right {
+            &:extend(blockquote.none);
+            .border-right(@typography-blockquotes-seprator-width, "solid @{typography-blockquotes-seprator-color}");
+        }
+
+        &.top {
+            &:extend(blockquote.none);
+            .border-top(@typography-blockquotes-seprator-width, "solid @{typography-blockquotes-seprator-color}");
+        }
+
+        &.bottom {
+            &:extend(blockquote.none);
+            .border-bottom(@typography-blockquotes-seprator-width, "solid @{typography-blockquotes-seprator-color}");
+        }
+
+        &.right-left {
+            .border-right(@typography-blockquotes-seprator-width, "solid @{typography-blockquotes-seprator-color}");
+        }
+
+        &.top-bottom {
+            &:extend(blockquote.none);
+            .border-top(@typography-blockquotes-seprator-width, "solid @{typography-blockquotes-seprator-color}");
+            .border-bottom(@typography-blockquotes-seprator-width, "solid @{typography-blockquotes-seprator-color}");
+        }
+
+        &.covered{
+            .border-top(@typography-blockquotes-seprator-width, "solid @{typography-blockquotes-seprator-color}");
+            .border-bottom(@typography-blockquotes-seprator-width, "solid @{typography-blockquotes-seprator-color}");
+            .border-right(@typography-blockquotes-seprator-width, "solid @{typography-blockquotes-seprator-color}");
+        }
+        
+        &.none {
+            .border-left(0px, "");
+        }
+
+        &.theme {
+            background-color: .framework-mixin-color-variations(@theme-accent-color)[@color-l5];
+        }
+        
+        & .heading {
+            .framework-mixin-setup-value(margin, @typography-blockquotes-heading-margin);
+            font-family: @theme-font_family;
+            font-weight: @theme-bold-font_weight;
+            font-size: @typography-blockquotes-heading-font_size;
+            letter-spacing: @typography-blockquotes-heading-letter_spacing;
+        }
+
+    }
+
+}
+
+.typography-mixin-lists-default(@typography_temp-lists-classes) {
+
+    ol {
+        .important.list-decimal;
+    }
+
+    ul {
+        .important.list-circle;
+    }
+
+    .def-tag-lists, ol, ul {
+        .important.block;
+    }
+
+    @{typography_temp-lists-classes} {
+        &@{framework-behaviour-classes} {
+            &:extend(.def-tag-lists);
+        }
+    };
+
+    ol, ul, @{typography_temp-lists-classes} { 
+
+        .framework-mixin-setup-value(margin, @typography-lists-margin);
+
+        .framework-mixin-setup-value(padding, @typography-lists-padding);
+
+    }
+
+}
+
+.typography-mixin-list_items-default(@typography_temp-list_items-classes) {
+
+    .def-tag-list_items, li {
+        .important.list-item;
+    }
+
+    @{typography_temp-list_items-classes} {
+        &@{framework-behaviour-classes} {
+            &:extend(.def-tag-list_items);
+        }
+    };
+
+    li, @{typography_temp-list_items-classes} { 
+
+        .framework-mixin-setup-value(margin, @typography-list_items-margin);
+
+        .framework-mixin-setup-value(padding, @typography-list_items-padding);
+
+        color: @typography-list_items-color;
+
+        font-size: @typography-list_items-font_size;
+    
+        font-weight: @typography-list_items-font_weight;
+    
+        letter-spacing: @typography-list_items-letter_spacing;
+
+        line-height: @typography-list_items-line_height;
+
+    }
+
+}
+
+.typography-mixin-hrs-default(@typography_temp-hrs-classes) {
+
+    
+    .def-tag-hrs, hr {
+        .important.noborder;
+        .important.block;
+    }
+
+    @{typography_temp-hrs-classes} {
+        &@{framework-behaviour-classes} {
+            &:extend(.def-tag-hrs);
+        }
+    };
+
+    hr, @{typography_temp-hrs-classes} {
+ 
+        height: @typography-hrs-height;
+
+        background-color: @typography-hrs-color;
+                
+        .framework-mixin-setup-value(margin, @typography-hrs-margin);
+
+        &.thin {
+            height: @typography-hrs_thin-height;
+        }
+
+        &.thick {
+            height: @typography-hrs_thick-height;
+        }
+
+        &.full {
+            .framework-mixin-setup-value(margin, @typography-hrs_full-margin);
+        }
+
+        &.extra {
+            .framework-mixin-setup-value(margin, @typography-hrs_extra-margin);
+        }
+
+        &.theme{
+            background-color: @theme-accent-color;
+        }
+    
+    }
+
+}
+
+.typography-mixin-links-default(@typography_temp-links-classes) {
+    
+    .def-tag-links, a {
+        .important.pointer;
+        .important.nodecoration;
+        .important.transition;
+    }
+
+    @{typography_temp-links-classes} {
+        &@{framework-behaviour-classes} {
+            &:extend(.def-tag-links);
+        }
+    };
+
+    a, @{typography_temp-links-classes} { 
+
+        .framework-mixin-setup-value(margin, @typography-links-margin);
+
+        color: darken(@typography-links-color, 10%);
+
+        font-weight: @typography-links-font_weight;
+
+        letter-spacing: @typography-links-letter_spacing;
+
+        &:hover{
+            color: darken(@typography-links-color, 30%)
+        }      
+        &:active{
+            color: @theme-links-color;
+        }
+        &:focus{
+            color: @theme-combination-color;
+        }
+
+        & when(@typography-links-default-underlined = true){
+            &:extend(a.underlined);
+        }
+
+        &.theme {
+            color: darken(@theme-accent-color, 30%);
+            &:hover{
+                color: @theme-accent-color;
+            }
+            &:active{
+                color: @theme-accent-color;
+            }
+        }
+
+        &.underlined{
+            .border-bottom(@typography-links-underline-width, "solid @{typography-links-underline-color}");
+        }
+
+        &.hover-underlined:hover{
+            &:extend(a.underlined);
+        }
+
+    }
+
+}
+
+
+// ------ over riders
+.typography-mixin-font_sizes-each(@i) when (@i > 0) {
+
+    .typography-mixin-font_sizes-each(@i - 1);
+
+    @class: extract(@typography-font_sizes-classes, @i); 
+
+    .@{class} {
+
+        font-size: .framework-mixin-size-gap(@typography-font_sizes-start, @typography-font_sizes-gap, @i, @typography-font_sizes-min)[] !important;
+
+
+    }
+
+}
+
+.typography-mixin-font_weights-each(@i) when (@i > 0) {
+
+    .typography-mixin-font_weights-each(@i - 1);
+
+    @class: extract(@typography-font_weights-classes, @i); 
+
+    .@{class} {
+
+        font-weight: .framework-mixin-weight-gap(@typography-font_weights-start, @typography-font_weights-gap, @i, @typography-font_weights-min)[] !important;
+
+    }
+
+}
+
+.typography-generate-extra-overriders() {
+
+    .gripped {
+
+        letter-spacing: @typography-overriders-gripped-letter_spacing;
+
+        &.tight when (@framework-scattered-properties = true) {
+            letter-spacing: @typography-overriders-tight_gripped-letter_spacing !important;
+        }
+
+        &.light when (@framework-scattered-properties = true) {
+            letter-spacing: @typography-overriders-light_gripped-letter_spacing !important;
+        }
+
+    }
+
+    & when(@framework-scattered-properties = false), (@framework-attached-properties = true) {
+
+        & when (@framework-scattered-properties = true) {
+            .gripped-tight {
+                &:extend(.gripped.tight);
+            }
+            .gripped-light {
+                &:extend(.gripped.light);
+            }
+        }
+
+        & when not (@framework-scattered-properties = true) {
+            .gripped-tight {
+                letter-spacing: @typography-overriders-tight_gripped-letter_spacing !important;
+            }
+            .gripped-light {
+                letter-spacing: @typography-overriders-light_gripped-letter_spacing !important;
+            }
+        }
+
+    }
+
+}

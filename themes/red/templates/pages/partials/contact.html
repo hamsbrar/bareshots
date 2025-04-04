@@ -1,0 +1,147 @@
+{$MASTER->insert-page_header}
+
+<div class="layout responsive header-margin">
+    <!--
+        Appointment feature, postponed, will add later    
+        
+    <div class="row hide-desktop hide-desktop-plus">
+        <div class="nav-container noselect">
+            <div id="book_apointment" class="nav-item trans active" onclick="toggle_mobilve_nav('book_apointment');">{$MASTER->insert-book_apointment_title_mobile}</div>
+            <div id="contact_form" class="nav-item trans" onclick="toggle_mobilve_nav('contact_form');">{$MASTER->insert-contact_form_title_mobile}</div>
+        </div>
+    </div> -->
+    <div class="row">
+        <!-- 
+            Appointment feature, postponed, will add later    
+
+        <div id="book_apointment_content" class="col-2 col-span-1 desktop-span-1 tablet-span-2 mobile-span-2 text-center">
+            <div class="page-navigation block full hide-mobile hide-tablet noselect">
+                <div class="page-title b1 satisfy ">
+                    <span class="h14 hide-mobile">{$MASTER->insert-book_apointment_title}</span>
+                    <div class="page-description h2 b1 gray quicksand">{$MASTER->insert-book_apointment_description}</div>
+                </div>
+            </div>
+            <div class="block left full">
+                appointment content
+            </div>
+        </div> -->
+
+        <div id="contact_form_content" class="full text-center">
+            <div class="page-navigation block full noselect">
+                <div class="page-title b1 satisfy ">
+                    <span class="h14">{$MASTER->insert-contact_form_title}</span>
+                    <div class="page-description h2 b1 gray quicksand">{$MASTER->insert-contact_form_description}</div>
+                </div>
+            </div>
+
+            <form id="contact_form" onsubmit="return submit_contact_form();" class="block left full">
+                
+                <div class="input-container"><input type="text" placeholder="{$MASTER->_contact_your_name}" class="input js-name h4 full b1"></div><br>
+                <div class="input-container"><input type="text" placeholder="{$MASTER->_contact_your_email}" class="js-email input h4 full b1"></div><br>
+                <div class="input-container"><textarea type="text" placeholder="{$MASTER->_contact_your_message}" class="textarea js-message h4 full b1"></textarea></div><br><br>
+
+                <div class="js-captcha-container js-is-hidden" style="display: none;">
+                    {$MASTER->insert-captcha}
+                </div>
+
+                <span class="input-container js-response"></span>
+
+                <div class="input-container"><button type="submit" class="btn btn-medium full js-submit">{$MASTER->_contact_submit}</button></textarea></div><br>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function toggle_mobilve_nav(id)
+    {
+        $('.nav-item').removeClass('active');
+
+        $('#' + id).addClass('active');
+
+        $("#" + id + "_content").siblings().slideUp(function () 
+        {
+            $("#" + id + "_content").slideDown();
+        })
+    }
+
+    function submit_contact_form()
+    {
+        let contact_form = $('#contact_form');
+
+        let captch_container = $('#contact_form .js-captcha-container');
+
+        let captch_image = $('#contact_form .js-captcha-image');
+
+        let name = $('#contact_form .js-name');
+        let email = $('#contact_form .js-email');
+        let message = $('#contact_form .js-message');
+        let captcha = $('#contact_form .js-captcha');
+
+        if(captch_container.hasClass('js-is-hidden'))
+        {
+            captch_container.removeClass('js-is-hidden').slideDown(function()
+            {
+                $('#contact_form .js-captcha').focus();
+            });
+        }
+        else
+        {
+            $.ajax(
+            {
+                type: 'POST',
+
+                url: url + '/ajax/submit/contact',
+            
+                dataType: 'JSON',
+
+                data: {name: name.val(), email: email.val(), message: message.val(), captcha: captcha.val()},
+
+                cache: false,
+
+                beforeSend: function ()
+                {
+                    $('#contact_form .js-submit').addClass('loading');
+
+                    sys_beforeSend();
+                    
+                    $('#contact_form .js-response').slideUp(function(){$('#contact_form .js-response').html('').slideDown()});
+                },
+
+                success: function (response)
+                {
+                    sys_handle(response, $('#contact_form .js-response'));
+                },
+
+                complete: function (xxhr, status)
+                {
+                    sys_handlexxhr(xxhr, status);
+
+                    $('#contact_form .js-submit').removeClass('loading');
+                }
+            });
+        }
+
+        return false;
+    }
+
+    $(() => 
+    {
+        if($(window).width() > 900 && {$MASTER->insert-page_animate_scroll_to_content})
+        {
+            $('html, body').animate({
+                scrollTop: $("#app_inner_page").offset().top
+            });
+
+            $('#contact_form .js-name').focus();
+        }
+    });
+</script>
+
+<style>
+    .floating-btn{display: none;}
+</style>
+{$MASTER->insert-page_footer}

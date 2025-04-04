@@ -1,0 +1,31 @@
+// layout module
+
+// module properties
+@module-name: 'layout';
+@module-file-name: 'index.less';
+
+// --------------------------- layout container
+
+@layout-default-width: 100%;
+@layout-default-padding-right: 0px;
+@layout-default-padding-left: 0px;
+
+@layout-classname: layout;
+@layout-row-classname: row;
+@layout-cols-classes-prefix: col-;
+@layout-colspan-classes-prefix: col-span-;
+
+@layout-responsive-identifier-name: responsive;
+@layout-mobspan-classes-prefix: mobile-span-;
+@layout-tabspan-classes-prefix: tablet-span-;
+@layout-desktopspan-classes-prefix: desktop-span-;
+
+@layout-total-cols-to-generate: 12;
+
+
+// --------------------------- 
+
+@import "@{modules-loading-path}/@{module-name}/mixins.less";
+
+// compile module file
+@import "@{modules-loading-path}/@{module-name}/@{module-file-name}";

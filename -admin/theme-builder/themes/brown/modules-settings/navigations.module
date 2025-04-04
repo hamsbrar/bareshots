@@ -1,0 +1,16 @@
+// navigations module
+
+// module properties
+@module-name: 'navigations';
+@module-file-name: 'index.less';
+
+// --------------------------- main
+
+@navigations-vertical-active-color: @theme-accent-color;
+
+// ---------------------------
+
+@import "@{modules-loading-path}/@{module-name}/mixins.less";
+
+// compile module file
+@import "@{modules-loading-path}/@{module-name}/@{module-file-name}";

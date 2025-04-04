@@ -1,0 +1,43 @@
+<script>
+
+window.deferAfterLoad.push
+(
+    function()
+    {
+        $.ajax(
+        {
+            type: 'POST',
+
+            url: url + '/{$MASTER->insert-load_path}',
+        
+            dataType: 'JSON',
+
+            data: {route_1: '{$MASTER->insert-app_route_1}', route_2: '{$MASTER->insert-app_route_2}'},
+
+            cache: false,
+
+            beforeSend: function ()
+            {
+                sys_beforeSend();
+                
+                $(".fullpage-overlay").detach().insertAfter('.app_body');
+
+                $("#app_body").html("");
+            },
+
+            success: function (response)
+            {
+                sys_handle(response, $('#app_body'));
+            },
+
+            complete: function (xxhr, status)
+            {
+                $(".fullpage-overlay").fadeOut(() => $(".fullpage-overlay").remove());
+
+                sys_handlexxhr(xxhr, status);
+            }
+        });
+    }
+);
+
+</script>

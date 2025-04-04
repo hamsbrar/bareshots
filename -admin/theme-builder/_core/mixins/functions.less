@@ -1,0 +1,184 @@
+// mixin functions
+@global-variable-hold: '';
+
+.framework-mixin-setup-value(@function, @list) {
+
+    @count: length(@list);
+
+    & when(@count = 1) {
+		.framework-mixin-setup-callout(@function, extract(@list, 1));
+    }
+    & when (@count = 2) {
+		.framework-mixin-setup-callout(@function, extract(@list, 1), extract(@list, 2));
+    }
+    & when (@count = 3) {
+		.framework-mixin-setup-callout(@function, extract(@list, 1), extract(@list, 2), extract(@list, 3));
+    }
+    & when (@count = 4) {
+		.framework-mixin-setup-callout(@function, extract(@list, 1), extract(@list, 2), extract(@list, 3), extract(@list, 4));
+	}	
+
+}
+
+.framework-mixin-get-classes(@keywords) {
+	
+	@string: replace(replace("@{keywords}", " ", "", "g"), ",", ",.", "g");
+
+	@return: ~".@{string}";
+
+}
+
+.framework-mixin-get-tags(@keywords) {
+	
+	@string: replace(replace("@{keywords}", " ", "", "g"), ",", ",&.", "g");
+
+	@return: ~".@{string}";
+
+}
+
+.framework-mixin-trim-keywords(@keywords) {
+	
+	@string: replace(replace("@{keywords}", " ", "", "g"), " ", "", "gi");
+
+	@return: ~"@{string}";
+
+}
+
+.framework-mixin-global-check(@var, @min) when not(@var < @min) {
+	@return: @var;
+}
+
+.framework-mixin-global-check(@var, @min) when (@var < @min) {
+	@return: @min;
+}
+
+.framework-mixin-size-gap(@max, @gap, @times, @min) {
+	
+	@temp: (@max - (@gap * (@times - 1)));
+
+	@return: .framework-mixin-global-check(@temp, @min)[];
+
+}
+
+// legacy version
+// .framework-mixin-weight-gap-modulas(@temp, @gap, @valid-value) when (mod(@temp, @valid-value) = 0) {
+// 	@return: @temp;
+// }
+
+// .framework-mixin-weight-gap-modulas(@temp, @gap, @valid-value) when not (mod(@temp, @valid-value) = 0) {
+
+// 	@return: .framework-mixin-weight-gap-modulas(@temp + @gap, @gap, @valid-value)[];
+
+// } 
+
+.framework-mixin-weight-gap-modulas(@temp, @valid-value) {
+
+	@return: .framework-mixin-closest-desending(@temp, @valid-value)[];
+	
+}
+
+.framework-mixin-weight-gap(@max, @gap, @times, @min) {
+	
+	// make approximation
+	@temp: (@max - (@gap * (@times - 1)));
+
+	// font-weight property supports only multipliers of 100s
+    @valid-value: 100;
+
+    @mod: .framework-mixin-global-check(@temp, @min)[];
+
+    @return: .framework-mixin-weight-gap-modulas(@mod, @valid-value)[];
+
+}
+
+.framework-mixin-closest(@value, @divisor) {
+
+	@rem: (@value / @divisor);
+
+	@outbout: (@divisor * @rem);
+	
+	@inbound: 
+		if( ((@value * @divisor) > 0),
+		 	(@divisor * (@rem + 1)),
+		(@divisor * (@rem - 1)) );
+	
+	@match: 
+		if( ( abs((@value - @outbout)) < abs((@value - @inbound)) ),
+			@outbout,
+		@inbound);
+
+}
+
+.framework-mixin-closest-desending(@a, @b) {
+
+    @c1: ((@a) - (mod(@a, @b)));
+
+    @c2: (@a + @b) - mod(@a, @b);
+
+    @return: if((@a - @c1 > @c2 - @a), @c2, @c1);
+
+}
+
+.framework-mixin-setup-callout(@function, @one) {
+	& when(@function = padding) {
+		.padding(@one);
+	}
+	& when(@function = margin) {
+		.margin(@one);
+	}
+	& when(@function = radius) {
+		.radius(@one);
+	}
+}
+
+.framework-mixin-setup-callout(@function, @one, @two) {
+	& when(@function = padding) {
+		.padding(@one, @two);
+	}
+	& when(@function = margin) {
+		.margin(@one, @two);
+	}
+	& when(@function = radius) {
+		.radius(@one, @two);
+	}
+}
+
+.framework-mixin-setup-callout(@function, @one, @two, @three) {
+	& when(@function = padding) {
+		.padding(@one, @two, @three);
+	}
+	& when(@function = margin) {
+		.margin(@one, @two, @three);
+	}
+	& when(@function = radius) {
+		.radius(@one, @two, @three);
+	}
+}
+
+.framework-mixin-setup-callout(@function, @one, @two, @three, @four) {
+	& when(@function = padding) {
+		.padding(@one, @two, @three, @four);
+	}
+	& when(@function = margin) {
+		.margin(@one, @two, @three, @four);
+	}
+	& when(@function = radius) {
+		.radius(@one, @two, @three, @four);
+	}
+}
+
+.framework-mixin-color-variations(@input-color) {
+	@color: @input-color;
+	@color-l1: screen(@color,@color-l1-additive);
+	@color-l2: screen(@color,@color-l2-additive);
+	@color-l3: screen(@color,@color-l3-additive);
+	@color-l4: screen(@color,@color-l4-additive);
+	@color-l5: screen(@color,@color-l5-additive);
+	@color-l6: screen(@color,@color-l6-additive);
+	@color-d1: multiply(@color,@color-d1-additive);
+	@color-d2: multiply(@color,@color-d2-additive);
+	@color-d3: multiply(@color,@color-d3-additive);
+	@color-d4: multiply(@color,@color-d4-additive);
+	@color-d5: multiply(@color,@color-d5-additive);
+	@color-d6: multiply(@color,@color-d6-additive);
+}

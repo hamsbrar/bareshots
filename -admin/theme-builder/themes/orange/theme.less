@@ -1,0 +1,34 @@
+
+// Preload color variables (used by theme)
+@import "theme/colors.less";
+
+// set colors
+@theme-accent-color: @color-orange;
+@theme-combination-color: @color-gray;
+@theme-white-color: @color-white;
+@theme-gray-color: @color-gray;
+@theme-black-color: @color-black;
+@theme-transparent-color: 'transparent';
+@theme-links-color: @theme-accent-color;
+
+@theme-bold-font_weight: 700;
+
+// common settings used by all modules
+@theme-font_color: #333;
+@theme-font_size: 1rem;
+@theme-font_weight: normal;
+@theme-font_family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+@theme-mono_font_family: "SF Mono", "Menlo", "Monaco", "Consolas", "Courier New";
+@theme-readable_font_family: 'Lato', 'Roboto', Arial, Tahoma, sans-serif;
+@theme-quote_font_family: sans-serif;
+
+@theme-line_height: 1.1;
+
+@theme-body-width: 1400px;
+@theme-body-background: #eee;
+
+// import document styles first
+@import "theme/document.less";
+
+// import universal shadow styles
+@import "theme/shadows.less";

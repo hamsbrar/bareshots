@@ -1,0 +1,17 @@
+// overriders module
+
+// module properties
+@module-name: 'overriders';
+@module-file-name: 'index.less';
+
+// --------------------------- margins
+
+@overriders-margin-variations: 2, 4, 5, 6, 8, 10, 15, 20, 25, 30, 35, 40, 45, 50;
+@overriders-padding-variations: 2, 4, 5, 6, 8, 10, 15, 20, 25, 30, 35, 40, 45, 50;
+
+// ---------------------------
+
+@import "@{modules-loading-path}/@{module-name}/mixins.less";
+
+// compile module file
+@import "@{modules-loading-path}/@{module-name}/@{module-file-name}";
