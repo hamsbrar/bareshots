@@ -15,11 +15,9 @@ To run locally:
 
 Christina(for letting us steal beautiful ideas) ❤️
 
-## Note
-
 This project was originally developed 4 years ago. The Git history has been reset due to privacy concerns—some earlier commits contained personal references to the client. To respect their wishes, I cleaned the repo and re-uploaded the code. 
 
-Commits Squashed:
+#### Commits Squashed:
 
 - [2021-04-10 09:46 PM] `added missing filesystem.php files`
 - [2021-04-09 05:40 PM] `added multi-line support in contact messages`
